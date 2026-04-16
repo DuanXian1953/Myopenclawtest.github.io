@@ -60,7 +60,7 @@
                 color: black !important;
             }
             
-            .nav, .theme-toggle, .toc-toggle, .toc-sidebar, .back-to-top, .ad-container {
+            .nav, .theme-toggle, .toc-toggle, .toc-sidebar, .back-to-top, .ad-container, .lang-switcher {
                 display: none !important;
             }
             
@@ -92,6 +92,10 @@
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-yaml.min.js"></script>
+    
+    <!-- i18n 多语言支持 -->
+    <link rel="stylesheet" href="i18n.css">
+    <script src="i18n.js"></script>
     
     <style>
         * {
@@ -239,6 +243,65 @@
             color: #764ba2;
         }
         
+        /* 语言切换按钮 */
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            right: 80px;
+            display: flex;
+            gap: 5px;
+            z-index: 1002;
+            background: white;
+            padding: 5px;
+            border-radius: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        .lang-btn {
+            background: transparent;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            color: #6c757d;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lang-btn:hover {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+        }
+        
+        .lang-btn.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        /* 深色模式语言切换器 */
+        body.dark-mode .lang-switcher {
+            background: #1e1e2e;
+        }
+        
+        body.dark-mode .lang-btn {
+            color: #a0a0a0;
+        }
+        
+        body.dark-mode .lang-btn:hover {
+            background: rgba(118, 75, 162, 0.2);
+            color: #764ba2;
+        }
+        
+        body.dark-mode .lang-btn.active {
+            background: #764ba2;
+            color: white;
+        }
+        
         /* 主题切换按钮 */
         .theme-toggle {
             position: fixed;
@@ -283,6 +346,18 @@
         
         /* 移动端适配 */
         @media (max-width: 768px) {
+            .lang-switcher {
+                top: 15px;
+                right: 65px;
+                padding: 3px;
+            }
+            
+            .lang-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 0.8em;
+            }
+            
             .toc-sidebar {
                 display: none !important;
             }
@@ -905,7 +980,13 @@
         }
     </style>
 </head>
-<body>
+<body data-page="intro">
+    <!-- 语言切换按钮 -->
+    <div class="lang-switcher" id="langSwitcher">
+        <button class="lang-btn active" data-lang="zh" onclick="switchLang('zh')" title="中文">中</button>
+        <button class="lang-btn" data-lang="en" onclick="switchLang('en')" title="English">EN</button>
+    </div>
+    
     <!-- 主题切换按钮 -->
     <button class="theme-toggle" onclick="toggleTheme()" title="切换深色/浅色模式">🌙</button>
     
@@ -914,38 +995,38 @@
     
     <!-- 目录侧边栏 -->
     <div class="toc-sidebar" id="tocSidebar">
-        <h4>📑 目录</h4>
+        <h4 data-i18n="toc.title">📑 目录</h4>
         <ul>
-            <li><a href="#intro">📖 什么是 OpenClaw？</a></li>
-            <li><a href="#install">🚀 安装与配置</a></li>
-            <li><a href="#config">🤖 AI 模型配置</a></li>
-            <li><a href="#feishu">📱 接入飞书</a></li>
-            <li><a href="#skills">🧩 技能扩展</a></li>
-            <li><a href="#performance">⚡ 性能优化</a></li>
-            <li><a href="#uninstall">🗑️ 删除/卸载</a></li>
-            <li><a href="#faq">❓ 常见问题</a></li>
-            <li><a href="#resources">🔗 资源与社区</a></li>
+            <li><a href="#intro" data-i18n="intro.whatIs">📖 什么是 OpenClaw？</a></li>
+            <li><a href="#install" data-i18n="install.title">🚀 安装与配置</a></li>
+            <li><a href="#config" data-i18n="feishu.config">🤖 AI 模型配置</a></li>
+            <li><a href="#feishu" data-i18n="feishu.title">📱 接入飞书</a></li>
+            <li><a href="#skills" data-i18n="skills.title">🧩 技能扩展</a></li>
+            <li><a href="#performance" data-i18n="performance.title">⚡ 性能优化</a></li>
+            <li><a href="#uninstall" data-i18n="uninstall.title">🗑️ 删除/卸载</a></li>
+            <li><a href="#faq" data-i18n="faq.title">❓ 常见问题</a></li>
+            <li><a href="#resources" data-i18n="resources.title">🔗 资源与社区</a></li>
         </ul>
     </div>
     
     <div class="container">
         <!-- 导航栏 -->
         <nav class="nav">
-            <a href="openclaw-intro.html#intro">🏠 首页</a>
-            <a href="about.html">ℹ️ 关于</a>
-            <a href="#intro">📖 介绍</a>
-            <a href="#install">🚀 安装</a>
-            <a href="#feishu">📱 飞书接入</a>
-            <a href="#skills">🧩 技能扩展</a>
-            <a href="#config">⚙️ 配置</a>
-            <a href="#performance">⚡ 性能</a>
-            <a href="#faq">❓ FAQ</a>
+            <a href="openclaw-intro.html#intro" data-i18n="nav.home">🏠 首页</a>
+            <a href="about.html" data-i18n="nav.about">ℹ️ 关于</a>
+            <a href="#intro" data-i18n="nav.intro">📖 介绍</a>
+            <a href="#install" data-i18n="nav.install">🚀 安装</a>
+            <a href="#feishu" data-i18n="nav.feishu">📱 飞书接入</a>
+            <a href="#skills" data-i18n="nav.skills">🧩 技能扩展</a>
+            <a href="#config" data-i18n="nav.config">⚙️ 配置</a>
+            <a href="#performance" data-i18n="nav.performance">⚡ 性能</a>
+            <a href="#faq" data-i18n="nav.faq">❓ FAQ</a>
         </nav>
 
         <header>
-            <h1>🦞 OpenClaw <span class="update-badge">📝 2026.4.2 更新</span></h1>
-            <p>你的个人 AI 助手 · 运行在你的设备上</p>
-            <p style="font-size: 0.9em; margin-top: 10px; opacity: 0.8;">适用版本：OpenClaw 2026.3.24+</p>
+            <h1>🦞 OpenClaw <span class="update-badge" data-i18n="intro.updateBadge">📝 2026.4.2 更新</span></h1>
+            <p data-i18n="intro.description">你的个人 AI 助手 · 运行在你的设备上</p>
+            <p style="font-size: 0.9em; margin-top: 10px; opacity: 0.8;" data-i18n="footer.version">适用版本：OpenClaw 2026.3.24+</p>
         </header>
 
         <!-- 顶部广告位 - Leaderboard -->
@@ -961,128 +1042,220 @@
 
         <!-- 介绍 -->
         <div class="section" id="intro">
-            <h2>📖 什么是 OpenClaw？</h2>
-            <p>OpenClaw 是一个开源的 AI 助手框架，可以运行在你自己的设备上。它不是云端服务，而是完全本地运行的智能助手。</p>
+            <h2 data-i18n="intro.whatIs">📖 什么是 OpenClaw？</h2>
+            <p><strong data-i18n="intro.whatIs.desc">OpenClaw 是一个</strong><strong>开源、本地优先</strong><strong data-i18n="intro.whatIs.mid">的 AI 助手框架，运行在你自己的设备上。与 ChatGPT、Claude 等云端服务不同，OpenClaw 将数据完全保留在本地，让你拥有真正的</strong><strong data-i18n="intro.whatIs.em">数据主权</strong><strong data-i18n="intro.whatIs.end">。</strong></p>
             
-            <h3>核心特点</h3>
+            <div class="info">
+                <strong data-i18n="intro.coreIdea">🎯 核心理念：</strong><span data-i18n="intro.coreIdea.desc">AI 助手应该是你的私人工具，而不是将你数据上传云端的服务。</span>
+            </div>
+            
+            <h3 data-i18n="intro.whyChoose">为什么选择 OpenClaw？</h3>
             <ul>
-                <li><strong>🏠 本地运行</strong> - 在你的电脑上运行，数据不出设备</li>
-                <li><strong>🤖 多模型支持</strong> - 支持 Kimi、通义千问、DeepSeek、Claude 等 30+ 模型</li>
-                <li><strong>💬 多渠道接入</strong> - 支持飞书、Telegram、WhatsApp、Discord 等</li>
-                <li><strong>📁 文件访问</strong> - 可以读写你的工作区文件</li>
-                <li><strong>🌐 网页浏览</strong> - 可以搜索网络、访问网页</li>
-                <li><strong>⏰ 定时任务</strong> - 支持 cron 定时任务和提醒</li>
-                <li><strong>🧠 记忆系统</strong> - 长期记忆和日常笔记，保持上下文连贯</li>
-                <li><strong>📱 设备控制</strong> - 可连接手机/平板，查看摄像头、屏幕等</li>
+                <li><strong data-i18n="intro.privacyFirst">🔒 隐私优先</strong> - <span data-i18n="intro.privacyFirst.desc">所有对话、文件、记忆都保存在你的设备上</span></li>
+                <li><strong data-i18n="intro.modelFreedom">🤖 模型自由</strong> - <span data-i18n="intro.modelFreedom.desc">不被锁定在单一 AI 提供商，随时切换</span></li>
+                <li><strong data-i18n="intro.localFirst">⚡ 本地优先</strong> - <span data-i18n="intro.localFirst.desc">支持 Ollama 本地模型，无需联网也能使用</span></li>
+                <li><strong data-i18n="intro.customizable">🔧 高度可定制</strong> - <span data-i18n="intro.customizable.desc">通过技能系统扩展能力，打造专属助手</span></li>
+                <li><strong data-i18n="intro.costControl">💰 成本可控</strong> - <span data-i18n="intro.costControl.desc">开源免费，按需使用 API，无订阅费</span></li>
+            </ul>
+            
+            <h3 data-i18n="intro.features">核心特点</h3>
+            <ul>
+                <li data-i18n="intro.feature.local"><strong>🏠 本地运行</strong> - 在你的电脑上运行，数据不出设备</li>
+                <li data-i18n="intro.feature.models"><strong>🤖 多模型支持</strong> - 支持 Kimi、通义千问、DeepSeek、Claude 等 30+ 模型</li>
+                <li data-i18n="intro.feature.channels"><strong>💬 多渠道接入</strong> - 支持飞书、Telegram、WhatsApp、Discord 等</li>
+                <li data-i18n="intro.feature.files"><strong>📁 文件访问</strong> - 可以读写你的工作区文件</li>
+                <li data-i18n="intro.feature.web"><strong>🌐 网页浏览</strong> - 可以搜索网络、访问网页</li>
+                <li data-i18n="intro.feature.cron"><strong>⏰ 定时任务</strong> - 支持 cron 定时任务和提醒</li>
+                <li data-i18n="intro.feature.memory"><strong>🧠 记忆系统</strong> - 长期记忆和日常笔记，保持上下文连贯</li>
+                <li data-i18n="intro.feature.device"><strong>📱 设备控制</strong> - 可连接手机/平板，查看摄像头、屏幕等</li>
             </ul>
             
             <div class="info">
-                <strong>💡 适合场景：</strong>个人助手、自动化任务、文件处理、日程管理、信息整理、代码辅助等
+                <strong data-i18n="intro.suitable">💡 适合场景：</strong><span data-i18n="intro.suitable.desc">个人助手、自动化任务、文件处理、日程管理、信息整理、代码辅助等</span>
             </div>
-            
-            <h3>🆚 与其他 AI 助手对比</h3>
+
+            <h3 data-i18n="intro.compare">🆚 与其他 AI 助手对比</h3>
             <table>
                 <thead>
                     <tr>
-                        <th>特性</th>
+                        <th data-i18n="compare.feature">特性</th>
                         <th>OpenClaw</th>
                         <th>ChatGPT</th>
                         <th>Claude</th>
-                        <th>文心一言</th>
+                        <th data-i18n="compare.wenxin">文心一言</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>数据隐私</strong></td>
-                        <td>✅ 完全本地</td>
-                        <td>❌ 云端存储</td>
-                        <td>❌ 云端存储</td>
-                        <td>❌ 云端存储</td>
+                        <td><strong data-i18n="compare.privacy">数据隐私</strong></td>
+                        <td data-i18n="compare.privacy.local">✅ 完全本地</td>
+                        <td data-i18n="compare.privacy.cloud">❌ 云端存储</td>
+                        <td data-i18n="compare.privacy.cloud">❌ 云端存储</td>
+                        <td data-i18n="compare.privacy.cloud">❌ 云端存储</td>
                     </tr>
                     <tr>
-                        <td><strong>模型选择</strong></td>
-                        <td>✅ 30+ 模型</td>
-                        <td>⚠️ 仅 OpenAI</td>
-                        <td>⚠️ 仅 Anthropic</td>
-                        <td>⚠️ 仅百度</td>
+                        <td><strong data-i18n="compare.models">模型选择</strong></td>
+                        <td data-i18n="compare.models.multi">✅ 30+ 模型</td>
+                        <td data-i18n="compare.models.single">⚠️ 仅 OpenAI</td>
+                        <td data-i18n="compare.models.single">⚠️ 仅 Anthropic</td>
+                        <td data-i18n="compare.models.single">⚠️ 仅百度</td>
                     </tr>
                     <tr>
-                        <td><strong>文件访问</strong></td>
-                        <td>✅ 直接读写</td>
-                        <td>❌ 需手动上传</td>
-                        <td>❌ 需手动上传</td>
-                        <td>❌ 需手动上传</td>
+                        <td><strong data-i18n="compare.fileAccess">文件访问</strong></td>
+                        <td data-i18n="compare.fileAccess.direct">✅ 直接读写</td>
+                        <td data-i18n="compare.fileAccess.upload">❌ 需手动上传</td>
+                        <td data-i18n="compare.fileAccess.upload">❌ 需手动上传</td>
+                        <td data-i18n="compare.fileAccess.upload">❌ 需手动上传</td>
                     </tr>
                     <tr>
-                        <td><strong>本地部署</strong></td>
-                        <td>✅ 支持 Ollama</td>
-                        <td>❌ 不支持</td>
-                        <td>❌ 不支持</td>
-                        <td>❌ 不支持</td>
+                        <td><strong data-i18n="compare.localDeploy">本地部署</strong></td>
+                        <td data-i18n="compare.localDeploy.support">✅ 支持 Ollama</td>
+                        <td data-i18n="compare.localDeploy.nosupport">❌ 不支持</td>
+                        <td data-i18n="compare.localDeploy.nosupport">❌ 不支持</td>
+                        <td data-i18n="compare.localDeploy.nosupport">❌ 不支持</td>
                     </tr>
                     <tr>
-                        <td><strong>定时任务</strong></td>
-                        <td>✅ 内置 cron</td>
-                        <td>❌ 不支持</td>
-                        <td>❌ 不支持</td>
-                        <td>❌ 不支持</td>
+                        <td><strong data-i18n="compare.cron">定时任务</strong></td>
+                        <td data-i18n="compare.cron.builtin">✅ 内置 cron</td>
+                        <td data-i18n="compare.cron.none">❌ 不支持</td>
+                        <td data-i18n="compare.cron.none">❌ 不支持</td>
+                        <td data-i18n="compare.cron.none">❌ 不支持</td>
                     </tr>
                     <tr>
-                        <td><strong>记忆系统</strong></td>
-                        <td>✅ 长期记忆</td>
-                        <td>⚠️ 会话内</td>
-                        <td>⚠️ 会话内</td>
-                        <td>⚠️ 会话内</td>
+                        <td><strong data-i18n="compare.memory">记忆系统</strong></td>
+                        <td data-i18n="compare.memory.longterm">✅ 长期记忆</td>
+                        <td data-i18n="compare.memory.session">⚠️ 会话内</td>
+                        <td data-i18n="compare.memory.session">⚠️ 会话内</td>
+                        <td data-i18n="compare.memory.session">⚠️ 会话内</td>
                     </tr>
                     <tr>
-                        <td><strong>开源</strong></td>
-                        <td>✅ 完全开源</td>
-                        <td>❌ 闭源</td>
-                        <td>❌ 闭源</td>
-                        <td>❌ 闭源</td>
+                        <td><strong data-i18n="compare.opensource">开源</strong></td>
+                        <td data-i18n="compare.opensource.yes">✅ 完全开源</td>
+                        <td data-i18n="compare.opensource.no">❌ 闭源</td>
+                        <td data-i18n="compare.opensource.no">❌ 闭源</td>
+                        <td data-i18n="compare.opensource.no">❌ 闭源</td>
                     </tr>
                     <tr>
-                        <td><strong>自定义技能</strong></td>
-                        <td>✅ 支持</td>
-                        <td>❌ 不支持</td>
-                        <td>❌ 不支持</td>
-                        <td>❌ 不支持</td>
+                        <td><strong data-i18n="compare.customSkills">自定义技能</strong></td>
+                        <td data-i18n="compare.customSkills.yes">✅ 支持</td>
+                        <td data-i18n="compare.customSkills.no">❌ 不支持</td>
+                        <td data-i18n="compare.customSkills.no">❌ 不支持</td>
+                        <td data-i18n="compare.customSkills.no">❌ 不支持</td>
                     </tr>
                     <tr>
-                        <td><strong>成本</strong></td>
-                        <td>💰 免费 + API 费用</td>
-                        <td>💰💰 订阅制</td>
-                        <td>💰💰 订阅制</td>
-                        <td>💰 按量付费</td>
+                        <td><strong data-i18n="compare.cost">成本</strong></td>
+                        <td data-i18n="compare.cost.free">💰 免费 + API 费用</td>
+                        <td data-i18n="compare.cost.subscription">💰💰 订阅制</td>
+                        <td data-i18n="compare.cost.subscription">💰💰 订阅制</td>
+                        <td data-i18n="compare.cost.usage">💰 按量付费</td>
                     </tr>
                 </tbody>
             </table>
             
-            <h3>🚀 5 分钟快速开始</h3>
+            <h3 data-i18n="intro.quickStart">🚀 5 分钟快速开始</h3>
             <div class="step">
-                <strong>步骤 1：安装 Node.js</strong>
-                <p>访问 <a href="https://nodejs.org/" target="_blank">nodejs.org</a> 下载并安装 v22+ 版本。</p>
+                <strong data-i18n="install.step1">步骤 1：安装 Node.js</strong>
+                <p data-i18n="install.nodejs.desc">访问 <a href="https://nodejs.org/" target="_blank">nodejs.org</a> 下载并安装 v22+ 版本。</p>
             </div>
             
             <div class="step">
-                <strong>步骤 2：安装 OpenClaw</strong>
+                <strong data-i18n="install.step2">步骤 2：安装 OpenClaw</strong>
                 <pre><code class="language-bash">npm install -g openclaw</code></pre>
             </div>
             
             <div class="step">
-                <strong>步骤 3：运行向导</strong>
+                <strong data-i18n="install.step3">步骤 3：运行向导</strong>
                 <pre><code class="language-bash">openclaw onboard --install-daemon</code></pre>
-                <p>按提示选择 AI 模型（推荐 Kimi 或 DeepSeek）并完成配置。</p>
+                <p data-i18n="install.wizard.desc">按提示选择 AI 模型（推荐 Kimi 或 DeepSeek）并完成配置。</p>
             </div>
             
             <div class="step">
-                <strong>步骤 4：开始对话</strong>
+                <strong data-i18n="install.step4">步骤 4：开始对话</strong>
                 <pre><code class="language-bash">openclaw chat</code></pre>
-                <p>或打开浏览器访问 <code>http://localhost:18789</code></p>
+                <p data-i18n="install.startChat.desc">或打开浏览器访问 <code>http://localhost:18789</code></p>
             </div>
             
-            <div class="success">
+            <div class="success" data-i18n="install.complete">
                 ✅ 完成！你现在拥有了一个运行在自己设备上的 AI 助手。
+            </div>
+            
+            <h3 data-i18n="intro.scenarios">🎯 10 个实际应用场景</h3>
+            <div class="step">
+                <strong data-i18n="intro.scenario1.title">1. 个人知识管理 📚</strong>
+                <p data-i18n="intro.scenario1.desc">整理笔记、提取重点、建立知识库，让 AI 帮你记住一切重要信息。</p>
+            </div>
+            
+            <div class="step">
+                <strong data-i18n="intro.scenario2.title">2. 代码开发助手 💻</strong>
+                <p data-i18n="intro.scenario2.desc">代码补全、Bug 排查、代码审查、技术文档生成，提升 2-3 倍开发效率。</p>
+            </div>
+            
+            <div class="step">
+                <strong data-i18n="intro.scenario3.title">3. 内容创作 ✍️</strong>
+                <p data-i18n="intro.scenario3.desc">文章写作、文案润色、翻译校对、创意头脑风暴，激发无限灵感。</p>
+            </div>
+            
+            <div class="step">
+                <strong data-i18n="intro.scenario4.title">4. 数据分析 📊</strong>
+                <p data-i18n="intro.scenario4.desc">CSV 处理、数据清洗、可视化建议、报告生成，让数据说话。</p>
+            </div>
+            
+            <div class="step">
+                <strong data-i18n="intro.scenario5.title">5. 自动化工作流 🤖</strong>
+                <p data-i18n="intro.scenario5.desc">定时任务、文件监控、API 调用、多步骤自动化，告别重复劳动。</p>
+            </div>
+            
+            <div class="step">
+                <strong data-i18n="intro.scenario6.title">6. 学习辅导 📖</strong>
+                <p data-i18n="intro.scenario6.desc">外语练习、概念解释、习题解答、学习计划制定，你的私人教师。</p>
+            </div>
+            
+            <div class="step">
+                <strong data-i18n="intro.scenario7.title">7. 生活助手 🏠</strong>
+                <p data-i18n="intro.scenario7.desc">菜谱推荐、旅行规划、日程提醒、健康管理，让生活更有序。</p>
+            </div>
+            
+            <div class="step">
+                <strong data-i18n="intro.scenario8.title">8. 企业协作 👥</strong>
+                <p data-i18n="intro.scenario8.desc">飞书/Telegram 机器人、团队知识库、会议纪要、项目管理。</p>
+            </div>
+            
+            <div class="step">
+                <strong data-i18n="intro.scenario9.title">9. 研究与调研 🔬</strong>
+                <p data-i18n="intro.scenario9.desc">文献综述、竞品分析、市场调研、信息聚合，快速获取洞察。</p>
+            </div>
+            
+            <div class="step">
+                <strong data-i18n="intro.scenario10.title">10. 创意娱乐 🎨</strong>
+                <p data-i18n="intro.scenario10.desc">故事创作、游戏设计、角色扮演、趣味对话，释放创造力。</p>
+            </div>
+            
+            <h3 data-i18n="intro.architecture">🏗️ 技术架构概览</h3>
+            <div class="info">
+                <p data-i18n="intro.architecture.desc">OpenClaw 采用模块化架构设计，核心组件包括：</p>
+                <ul>
+                    <li><strong data-i18n="intro.arch.gateway">Gateway</strong> - <span data-i18n="intro.arch.gateway.desc">HTTP 服务器，处理所有请求和会话管理</span></li>
+                    <li><strong data-i18n="intro.arch.agent">Agent Runtime</strong> - <span data-i18n="intro.arch.agent.desc">AI 模型调用和工具执行引擎</span></li>
+                    <li><strong data-i18n="intro.arch.skill">Skill System</strong> - <span data-i18n="intro.arch.skill.desc">可插拔的技能扩展机制</span></li>
+                    <li><strong data-i18n="intro.arch.memory">Memory Layer</strong> - <span data-i18n="intro.arch.memory.desc">长期记忆和上下文管理</span></li>
+                    <li><strong data-i18n="intro.arch.channel">Channel Adapters</strong> - <span data-i18n="intro.arch.channel.desc">多渠道接入适配器（飞书、Telegram 等）</span></li>
+                    <li><strong data-i18n="intro.arch.cron">Cron Scheduler</strong> - <span data-i18n="intro.arch.cron.desc">定时任务调度器</span></li>
+                </ul>
+            </div>
+            
+            <h3 data-i18n="intro.community">🎉 社区生态</h3>
+            <p data-i18n="intro.community.desc">OpenClaw 拥有活跃的开发者社区，持续贡献技能、插件和改进：</p>
+            <ul>
+                <li><strong data-i18n="intro.community.skills">🌟 100+ 社区技能</strong> - <span data-i18n="intro.community.skills.desc">从网页爬虫到数据库管理，应有尽有</span></li>
+                <li><strong data-i18n="intro.community.channels">📦 30+ 集成渠道</strong> - <span data-i18n="intro.community.channels.desc">支持主流通讯工具和平台</span></li>
+                <li><strong data-i18n="intro.community.updates">🔥 每周更新</strong> - <span data-i18n="intro.community.updates.desc">快速迭代，持续优化</span></li>
+                <li><strong data-i18n="intro.community.languages">🌍 多语言支持</strong> - <span data-i18n="intro.community.languages.desc">中文、英文、日文等</span></li>
+                <li><strong data-i18n="intro.community.opensource">🤝 开源协作</strong> - <span data-i18n="intro.community.opensource.desc">GitHub 上活跃的 Issue 和 PR 讨论</span></li>
+            </ul>
+            
+            <div class="success">
+                <strong data-i18n="intro.ready">🚀 准备好开始了吗？</strong><br>
+                <span data-i18n="intro.ready.desc">继续阅读下方的 <a href="#install">安装与配置</a> 章节，或加入 <a href="#resources">Discord 社区</a> 获取帮助！</span>
             </div>
         </div>
 
@@ -1101,98 +1274,98 @@
         <div class="section" id="install">
             <h2>🚀 安装与配置</h2>
             
-            <h3>⚙️ 前置条件</h3>
+            <h3>⚙️ <span data-i18n="install.prerequisites">前置条件</span></h3>
             <div class="warning">
-                <strong>⚠️ 安装前请确保满足以下所有要求：</strong>
+                <strong data-i18n="install.prerequisites.warning">⚠️ 安装前请确保满足以下所有要求：</strong>
             </div>
             
             <table>
                 <thead>
                     <tr>
-                        <th>要求</th>
-                        <th>详细说明</th>
-                        <th>验证命令</th>
+                        <th data-i18n="install.requirement">要求</th>
+                        <th data-i18n="install.details">详细说明</th>
+                        <th data-i18n="install.verifyCmd">验证命令</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>操作系统</strong></td>
-                        <td>Windows 10+ / macOS 11+ / Linux (Ubuntu 20.04+)</td>
+                        <td data-i18n="install.os"><strong>操作系统</strong></td>
+                        <td data-i18n="install.os.desc">Windows 10+ / macOS 11+ / Linux (Ubuntu 20.04+)</td>
                         <td><code>ver</code> / <code>uname -a</code></td>
                     </tr>
                     <tr>
-                        <td><strong>Node.js</strong></td>
-                        <td>≥ 22.0.0 (必须)</td>
+                        <td data-i18n="install.node"><strong>Node.js</strong></td>
+                        <td data-i18n="install.node.desc">≥ 22.0.0 (必须)</td>
                         <td><code>node -v</code></td>
                     </tr>
                     <tr>
-                        <td><strong>npm</strong></td>
-                        <td>≥ 10.0.0 (随 Node.js 安装)</td>
+                        <td data-i18n="install.npm"><strong>npm</strong></td>
+                        <td data-i18n="install.npm.desc">≥ 10.0.0 (随 Node.js 安装)</td>
                         <td><code>npm -v</code></td>
                     </tr>
                     <tr>
-                        <td><strong>Git</strong></td>
-                        <td>用于版本控制和技能管理</td>
+                        <td data-i18n="install.git"><strong>Git</strong></td>
+                        <td data-i18n="install.git.desc">用于版本控制和技能管理</td>
                         <td><code>git --version</code></td>
                     </tr>
                     <tr>
-                        <td><strong>内存</strong></td>
-                        <td>至少 2GB 可用内存</td>
-                        <td>任务管理器查看</td>
+                        <td data-i18n="install.memory"><strong>内存</strong></td>
+                        <td data-i18n="install.memory.desc">至少 2GB 可用内存</td>
+                        <td data-i18n="install.memory.check">任务管理器查看</td>
                     </tr>
                     <tr>
-                        <td><strong>磁盘空间</strong></td>
-                        <td>至少 500MB 可用空间</td>
+                        <td data-i18n="install.disk"><strong>磁盘空间</strong></td>
+                        <td data-i18n="install.disk.desc">至少 500MB 可用空间</td>
                         <td>-</td>
                     </tr>
                     <tr>
-                        <td><strong>网络</strong></td>
-                        <td>需要访问 AI 模型 API（可能需要代理）</td>
-                        <td>确保能访问外网</td>
+                        <td data-i18n="install.network"><strong>网络</strong></td>
+                        <td data-i18n="install.network.desc">需要访问 AI 模型 API（可能需要代理）</td>
+                        <td data-i18n="install.network.check">确保能访问外网</td>
                     </tr>
                 </tbody>
             </table>
             
-            <h3>📦 安装方法</h3>
+            <h3 data-i18n="install.methods">📦 安装方法</h3>
             
             <div class="tabs">
-                <button class="tab-btn active" onclick="switchTab(event, 'npm-install')">npm 安装</button>
-                <button class="tab-btn" onclick="switchTab(event, 'source-install')">源码安装</button>
+                <button class="tab-btn active" onclick="switchTab(event, 'npm-install')" data-i18n="install.npm">npm 安装</button>
+                <button class="tab-btn" onclick="switchTab(event, 'source-install')" data-i18n="install.source">源码安装</button>
                 <button class="tab-btn" onclick="switchTab(event, 'docker-install')">Docker</button>
             </div>
             
             <div id="npm-install" class="tab-content active">
                 <div class="step">
-                    <strong>步骤 1：安装 Node.js v22+</strong>
-                    <p><strong>Windows：</strong>访问 <a href="https://nodejs.org/" target="_blank">nodejs.org</a> 下载 .msi 安装程序。</p>
-                    <p><strong>macOS：</strong></p>
+                    <strong data-i18n="install.step1.title">步骤 1：安装 Node.js v22+</strong>
+                    <p><strong data-i18n="platform.windows">Windows：</strong><span data-i18n="install.step1.windows">访问 <a href="https://nodejs.org/" target="_blank">nodejs.org</a> 下载 .msi 安装程序。</span></p>
+                    <p><strong data-i18n="platform.macos">macOS：</strong></p>
                     <pre><code class="language-bash">brew install node@22</code></pre>
-                    <p><strong>Linux：</strong></p>
+                    <p><strong data-i18n="platform.linux">Linux：</strong></p>
                     <pre><code class="language-bash">curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
 sudo apt-get install -y nodejs</code></pre>
                 </div>
                 
                 <div class="step">
-                    <strong>步骤 2：全局安装 OpenClaw</strong>
+                    <strong data-i18n="install.step2.title">步骤 2：全局安装 OpenClaw</strong>
                     <pre><code class="language-bash">npm install -g openclaw</code></pre>
                 </div>
                 
                 <div class="step">
-                    <strong>步骤 3：验证安装</strong>
+                    <strong data-i18n="install.step3.title">步骤 3：验证安装</strong>
                     <pre><code class="language-bash">openclaw --version
-# 应输出版本号，如：2026.3.24</code></pre>
+# <span data-i18n="install.step3.desc">应输出版本号，如：2026.3.24</span></code></pre>
                 </div>
             </div>
             
             <div id="source-install" class="tab-content">
                 <div class="step">
-                    <strong>步骤 1：克隆仓库</strong>
+                    <strong data-i18n="install.source.step1">步骤 1：克隆仓库</strong>
                     <pre><code class="language-bash">git clone https://github.com/openclaw/openclaw.git
 cd openclaw</code></pre>
                 </div>
                 
                 <div class="step">
-                    <strong>步骤 2：安装依赖并链接</strong>
+                    <strong data-i18n="install.source.step2">步骤 2：安装依赖并链接</strong>
                     <pre><code class="language-bash">npm install
 npm link</code></pre>
                 </div>
@@ -1200,12 +1373,12 @@ npm link</code></pre>
             
             <div id="docker-install" class="tab-content">
                 <div class="step">
-                    <strong>步骤 1：拉取镜像</strong>
+                    <strong data-i18n="install.docker.step1">步骤 1：拉取镜像</strong>
                     <pre><code class="language-bash">docker pull openclaw/openclaw:latest</code></pre>
                 </div>
                 
                 <div class="step">
-                    <strong>步骤 2：运行容器</strong>
+                    <strong data-i18n="install.docker.step2">步骤 2：运行容器</strong>
                     <pre><code class="language-bash">docker run -d \
   --name openclaw \
   -p 18789:18789 \
@@ -1215,45 +1388,47 @@ npm link</code></pre>
                 </div>
             </div>
             
-            <h3>🎯 初始化与配置</h3>
+            <h3 data-i18n="install.init">🎯 初始化与配置</h3>
             
             <div class="step">
-                <strong>运行交互式向导</strong>
+                <strong data-i18n="install.wizard.title">运行交互式向导</strong>
                 <pre><code class="language-bash">openclaw onboard --install-daemon</code></pre>
-                <p>交互式向导将引导你完成以下配置：</p>
+                <p data-i18n="install.wizard.desc2">交互式向导将引导你完成以下配置：</p>
                 <ul>
-                    <li><strong>选择 AI 模型提供商</strong> - Kimi、DeepSeek、通义千问、Ollama 等</li>
-                    <li><strong>配置认证信息</strong> - API 密钥或 OAuth 授权</li>
-                    <li><strong>设置工作区目录</strong> - 默认 ~/.openclaw/workspace</li>
-                    <li><strong>配置渠道</strong> - 飞书、Telegram、WhatsApp 等（可选）</li>
-                    <li><strong>安装守护进程</strong> - 开机自启动（可选）</li>
+                    <li><strong data-i18n="install.wizard.provider">选择 AI 模型提供商</strong> - Kimi、DeepSeek、通义千问、Ollama 等</li>
+                    <li><strong data-i18n="install.wizard.auth">配置认证信息</strong> - <span data-i18n="install.wizard.auth.desc">API 密钥或 OAuth 授权</span></li>
+                    <li><strong data-i18n="install.wizard.workspace">设置工作区目录</strong> - <span data-i18n="install.wizard.workspace.desc">默认 ~/.openclaw/workspace</span></li>
+                    <li><strong data-i18n="install.wizard.channels">配置渠道</strong> - <span data-i18n="install.wizard.channels.desc">飞书、Telegram、WhatsApp 等（可选）</span></li>
+                    <li><strong data-i18n="install.wizard.daemon">安装守护进程</strong> - <span data-i18n="install.wizard.daemon.desc">开机自启动（可选）</span></li>
                 </ul>
                 <div class="info">
-                    💡 <strong>提示：</strong> 配置完成后会在 ~/.openclaw/ 目录生成配置文件
+                    💡 <strong data-i18n="install.wizard.configLocation">配置文件位置：</strong><br>
+                    • <span data-i18n="install.wizard.configLocation.win">Windows</span>: <code>%USERPROFILE%\.openclaw\openclaw.json</code><br>
+                    • <span data-i18n="install.wizard.configLocation.unix">macOS/Linux</span>: <code>~/.openclaw/openclaw.json</code>
                 </div>
             </div>
             
-            <h3 id="config">🤖 AI 模型配置</h3>
+            <h3 id="config" data-i18n="config.ai.title">🤖 AI 模型配置</h3>
             
             <div class="info">
-                <strong>📁 配置文件位置：</strong><br>
-                • Windows: <code>%USERPROFILE%\.openclaw\openclaw.json</code><br>
-                • macOS/Linux: <code>~/.openclaw/openclaw.json</code>
+                <strong data-i18n="config.ai.configLocation">📁 配置文件位置：</strong><br>
+                • <span data-i18n="install.wizard.configLocation.win">Windows</span>: <code>%USERPROFILE%\.openclaw\openclaw.json</code><br>
+                • <span data-i18n="install.wizard.configLocation.unix">macOS/Linux</span>: <code>~/.openclaw/openclaw.json</code>
             </div>
             
             <div class="tabs">
-                <button class="tab-btn active" onclick="switchTab(event, 'cloud-models')">云端模型</button>
-                <button class="tab-btn" onclick="switchTab(event, 'local-models')">本地模型</button>
-                <button class="tab-btn" onclick="switchTab(event, 'config-formats')">配置文件格式</button>
+                <button class="tab-btn active" onclick="switchTab(event, 'cloud-models')" data-i18n="install.cloudModels">云端模型</button>
+                <button class="tab-btn" onclick="switchTab(event, 'local-models')" data-i18n="install.localModels">本地模型</button>
+                <button class="tab-btn" onclick="switchTab(event, 'config-formats')" data-i18n="install.configFormat">配置文件格式</button>
             </div>
             
             <div id="cloud-models" class="tab-content active">
-                <p>云端模型无需本地 GPU，通过 API 调用，适合大多数用户：</p>
+                <p data-i18n="install.cloudModels.desc">云端模型无需本地 GPU，通过 API 调用，适合大多数用户：</p>
                 
                 <details>
-                    <summary>DeepSeek 配置</summary>
+                    <summary data-i18n="install.deepseek">DeepSeek 配置</summary>
                     <div class="content">
-                        <p><strong>获取 API Key：</strong>访问 <a href="https://platform.deepseek.com/" target="_blank">platform.deepseek.com</a></p>
+                        <p><strong data-i18n="install.deepseek.key">获取 API Key：</strong>访问 <a href="https://platform.deepseek.com/" target="_blank">platform.deepseek.com</a></p>
                         <pre><code class="language-json">// ~/.openclaw/openclaw.json
 {
   "auth": {
@@ -1283,9 +1458,9 @@ npm link</code></pre>
                 </details>
                 
                 <details>
-                    <summary>Kimi (Moonshot) 配置</summary>
+                    <summary data-i18n="install.kimi">Kimi (Moonshot) 配置</summary>
                     <div class="content">
-                        <p><strong>获取 API Key：</strong>访问 <a href="https://platform.moonshot.cn/" target="_blank">platform.moonshot.cn</a></p>
+                        <p><strong data-i18n="install.kimi.key">获取 API Key：</strong>访问 <a href="https://platform.moonshot.cn/" target="_blank">platform.moonshot.cn</a></p>
                         <pre><code class="language-json">// ~/.openclaw/openclaw.json
 {
   "auth": {
@@ -1316,9 +1491,9 @@ npm link</code></pre>
                 </details>
                 
                 <details>
-                    <summary>通义千问 (Qwen) 配置</summary>
+                    <summary data-i18n="install.qwen">通义千问 (Qwen) 配置</summary>
                     <div class="content">
-                        <p><strong>获取 API Key：</strong>访问 <a href="https://dashscope.console.aliyun.com/" target="_blank">dashscope.console.aliyun.com</a></p>
+                        <p><strong data-i18n="install.qwen.key">获取 API Key：</strong>访问 <a href="https://dashscope.console.aliyun.com/" target="_blank">dashscope.console.aliyun.com</a></p>
                         <pre><code class="language-json">// ~/.openclaw/openclaw.json
 {
   "auth": {
@@ -1338,38 +1513,38 @@ npm link</code></pre>
   }
 }</code></pre>
                         <div class="info">
-                            💡 通义千问支持 OAuth 登录，运行 <code>openclaw auth login qwen-portal</code> 授权
+                            💡 <span data-i18n="install.qwen.oauth">通义千问支持 OAuth 登录，运行</span> <code>openclaw auth login qwen-portal</code> <span data-i18n="install.qwen.oauth.end">授权</span>
                         </div>
                     </div>
                 </details>
             </div>
             
             <div id="local-models" class="tab-content">
-                <p>本地模型需要 GPU（建议 8GB+ 显存），数据完全本地，适合隐私敏感场景：</p>
+                <p data-i18n="install.localModels.desc">本地模型需要 GPU（建议 8GB+ 显存），数据完全本地，适合隐私敏感场景：</p>
                 
                 <details>
-                    <summary>Ollama + Qwen 配置</summary>
+                    <summary data-i18n="install.ollama">Ollama + Qwen 配置</summary>
                     <div class="content">
-                        <p><strong>1. 安装 Ollama：</strong></p>
+                        <p><strong data-i18n="install.ollama.install">1. 安装 Ollama：</strong></p>
                         <pre><code class="language-bash"># macOS / Linux
 curl -fsSL https://ollama.com/install.sh | sh
 
 # Windows: 访问 ollama.com 下载安装程序</code></pre>
                         
-                        <p><strong>2. 拉取模型：</strong></p>
-                        <pre><code class="language-bash"># Qwen2.5 7B (约需 4GB 显存)
+                        <p><strong data-i18n="install.ollama.pull">2. 拉取模型：</strong></p>
+                        <pre><code class="language-bash"># Qwen2.5 7B (<span data-i18n="install.ollama.qwen7b">约需 4GB 显存</span>)
 ollama pull qwen2.5:7b
 
-# Qwen2.5 14B (约需 8GB 显存)
+# Qwen2.5 14B (<span data-i18n="install.ollama.qwen14b">约需 8GB 显存</span>)
 ollama pull qwen2.5:14b
 
-# 查看已下载模型
+# <span data-i18n="install.ollama.list">查看已下载模型</span>
 ollama list</code></pre>
                         
-                        <p><strong>3. 验证 Ollama 运行：</strong></p>
+                        <p><strong data-i18n="install.ollama.verify">3. 验证 Ollama 运行：</strong></p>
                         <pre><code class="language-bash">ollama run qwen2.5:7b "你好"</code></pre>
                         
-                        <p><strong>4. OpenClaw 配置：</strong></p>
+                        <p><strong data-i18n="install.ollama.config">4. OpenClaw 配置：</strong></p>
                         <pre><code class="language-json">// ~/.openclaw/openclaw.json
 {
   "models": {
@@ -1388,37 +1563,37 @@ ollama list</code></pre>
   }
 }</code></pre>
                         
-                        <p><strong>5. 启动并测试：</strong></p>
+                        <p><strong data-i18n="install.ollama.start">5. 启动并测试：</strong></p>
                         <pre><code class="language-bash">openclaw gateway restart
 openclaw chat</code></pre>
                     </div>
                 </details>
                 
                 <details>
-                    <summary>其他本地模型</summary>
+                    <summary data-i18n="install.otherLocal">其他本地模型</summary>
                     <div class="content">
-                        <p><strong>Llama 3.2：</strong></p>
+                        <p><strong data-i18n="model.other.llama">Llama 3.2：</strong></p>
                         <pre><code class="language-bash">ollama pull llama3.2:3b
-# 配置：ollama/llama3.2:3b</code></pre>
+# <span data-i18n="install.config.hint">配置</span>：ollama/llama3.2:3b</code></pre>
                         
-                        <p><strong>Mistral：</strong></p>
+                        <p><strong data-i18n="model.other.mistral">Mistral：</strong></p>
                         <pre><code class="language-bash">ollama pull mistral:7b
-# 配置：ollama/mistral:7b</code></pre>
+# <span data-i18n="install.config.hint">配置</span>：ollama/mistral:7b</code></pre>
                         
-                        <p><strong>Phi-3：</strong></p>
+                        <p><strong data-i18n="model.other.phi">Phi-3：</strong></p>
                         <pre><code class="language-bash">ollama pull phi3:3.8b
-# 配置：ollama/phi3:3.8b</code></pre>
+# <span data-i18n="install.config.hint">配置</span>：ollama/phi3:3.8b</code></pre>
                     </div>
                 </details>
             </div>
             
             <div id="config-formats" class="tab-content">
-                <p>OpenClaw 支持多种配置文件格式，根据需求选择：</p>
+                <p data-i18n="install.configFormat.desc">OpenClaw 支持多种配置文件格式，根据需求选择：</p>
                 
                 <details>
-                    <summary>📄 openclaw.json（主配置文件）</summary>
+                    <summary data-i18n="config.file.main">📄 openclaw.json（主配置文件）</summary>
                     <div class="content">
-                        <p>这是 OpenClaw 的主要配置文件，位于 <code>~/.openclaw/openclaw.json</code></p>
+                        <p data-i18n="config.file.main.desc">这是 OpenClaw 的主要配置文件，位于 <code>~/.openclaw/openclaw.json</code></p>
                         <pre><code class="language-json">{
   "meta": {
     "lastTouchedVersion": "2026.3.24",
@@ -1475,9 +1650,9 @@ openclaw chat</code></pre>
                 </details>
                 
                 <details>
-                    <summary>🔐 auth-profiles.json（认证配置）</summary>
+                    <summary data-i18n="config.file.auth">🔐 auth-profiles.json（认证配置）</summary>
                     <div class="content">
-                        <p>集中管理所有 API 密钥和认证信息：</p>
+                        <p data-i18n="config.file.auth.desc">集中管理所有 API 密钥和认证信息：</p>
                         <pre><code class="language-json">// ~/.openclaw/auth-profiles.json
 {
   "profiles": {
@@ -1509,9 +1684,9 @@ openclaw chat</code></pre>
                 </details>
                 
                 <details>
-                    <summary>⚙️ config.yaml（可选格式）</summary>
+                    <summary data-i18n="config.file.yaml">⚙️ config.yaml（可选格式）</summary>
                     <div class="content">
-                        <p>部分场景支持 YAML 格式配置：</p>
+                        <p data-i18n="config.file.yaml.desc">部分场景支持 YAML 格式配置：</p>
                         <pre><code class="language-yaml"># ~/.openclaw/config.yaml
 auth:
   profiles:
@@ -1550,9 +1725,9 @@ gateway:
                 </details>
                 
                 <details>
-                    <summary>🔑 .env（环境变量）</summary>
+                    <summary data-i18n="config.file.env">🔑 .env（环境变量）</summary>
                     <div class="content">
-                        <p>使用环境变量覆盖配置：</p>
+                        <p data-i18n="config.file.env.desc">使用环境变量覆盖配置：</p>
                         <pre><code class="language-bash"># ~/.openclaw/.env
 OPENCLAW_MODEL_PRIMARY=moonshot/kimi-k2.5
 OPENCLAW_MODEL_FALLBACK=ollama/qwen2.5:7b
@@ -1562,28 +1737,28 @@ OPENCLAW_FEISHU_APP_ID=cli_xxx
 OPENCLAW_FEISHU_APP_SECRET=xxx
 OPENCLAW_GATEWAY_PORT=18789</code></pre>
                         <div class="warning">
-                            ⚠️ <strong>安全提醒：</strong>不要将 .env 文件提交到 Git 仓库！
+                            ⚠️ <strong data-i18n="config.file.env.warning">安全提醒：</strong><span data-i18n="config.file.env.warning.desc">不要将 .env 文件提交到 Git 仓库！</span>
                         </div>
                     </div>
                 </details>
             </div>
             
-            <h3>✅ 验证运行</h3>
+            <h3 data-i18n="install.verify">✅ 验证运行</h3>
             
             <div class="step">
-                <strong>步骤 1：启动网关</strong>
+                <strong data-i18n="install.verify.step1">步骤 1：启动网关</strong>
                 <pre><code class="language-bash">openclaw gateway start</code></pre>
-                <p><strong>预期输出：</strong></p>
+                <p><strong data-i18n="install.verify.expected">预期输出：</strong></p>
                 <pre><code class="language-bash">✓ Gateway started
 ✓ Listening on http://localhost:18789
 ✓ Session: agent:main:main</code></pre>
             </div>
             
             <div class="step">
-                <strong>步骤 2：检查状态</strong>
+                <strong data-i18n="install.verify.step2">步骤 2：检查状态</strong>
                 <pre><code class="language-bash">openclaw gateway status</code></pre>
                 <div class="success">
-                    <strong>正常输出示例：</strong><br>
+                    <strong data-i18n="install.verify.normal">正常输出示例：</strong><br>
                     <code>🦞 OpenClaw 2026.3.24</code><br>
                     <code>🕒 Time: Tuesday, March 31st, 2026 — 14:00 (Asia/Shanghai)</code><br>
                     <code>🧠 Model: moonshot/kimi-k2.5</code><br>
@@ -1592,7 +1767,7 @@ OPENCLAW_GATEWAY_PORT=18789</code></pre>
             </div>
             
             <div class="step">
-                <strong>步骤 3：健康检查</strong>
+                <strong data-i18n="install.verify.step3">步骤 3：健康检查</strong>
                 <pre><code class="language-bash"># 方法 1: curl 命令
 curl http://localhost:18789/health
 
@@ -1601,7 +1776,7 @@ Invoke-WebRequest http://localhost:18789/health
 
 # 方法 3: 浏览器访问
 # 打开 http://localhost:18789</code></pre>
-                <p><strong>健康检查响应示例：</strong></p>
+                <p><strong data-i18n="install.verify.healthResponse">健康检查响应示例：</strong></p>
                 <pre><code class="language-json">{
   "status": "ok",
   "gateway": "running",
@@ -1612,13 +1787,13 @@ Invoke-WebRequest http://localhost:18789/health
             </div>
             
             <div class="step">
-                <strong>步骤 4：测试对话</strong>
+                <strong data-i18n="install.verify.step4">步骤 4：测试对话</strong>
                 <pre><code class="language-bash"># 命令行对话
 openclaw chat
 
 # 输入：你好
 # 应该收到 AI 回复</code></pre>
-                <p><strong>或使用 Web 界面：</strong></p>
+                <p><strong data-i18n="install.verify.webui">或使用 Web 界面：</strong></p>
                 <ul>
                     <li>打开浏览器访问 <code>http://localhost:18789</code></li>
                     <li>在聊天框输入消息</li>
@@ -1627,7 +1802,7 @@ openclaw chat
             </div>
             
             <div class="step">
-                <strong>步骤 5：查看日志（故障排查）</strong>
+                <strong data-i18n="install.verify.step5">步骤 5：查看日志（故障排查）</strong>
                 <pre><code class="language-bash"># 实时查看日志
 openclaw gateway logs --follow
 
@@ -1639,38 +1814,38 @@ openclaw gateway logs --output openclaw.log</code></pre>
             </div>
             
             <div class="warning">
-                <strong>⚠️ 常见问题排查：</strong><br>
-                • <strong>端口被占用：</strong>修改配置中的 <code>gateway.port</code><br>
-                • <strong>模型无法连接：</strong>检查 API Key 或网络连接<br>
-                • <strong>Ollama 无法访问：</strong>确认 <code>ollama serve</code> 正在运行
+                <strong data-i18n="install.verify.troubleshoot">⚠️ 常见问题排查：</strong><br>
+                • <strong data-i18n="install.verify.troubleshoot.port">端口被占用：</strong><span data-i18n="install.verify.troubleshoot.port.fix">修改配置中的</span> <code>gateway.port</code><br>
+                • <strong data-i18n="install.verify.troubleshoot.model">模型无法连接：</strong><span data-i18n="install.verify.troubleshoot.model.fix">检查 API Key 或网络连接</span><br>
+                • <strong data-i18n="install.verify.troubleshoot.ollama">Ollama 无法访问：</strong><span data-i18n="install.verify.troubleshoot.ollama.fix">确认</span> <code>ollama serve</code> <span data-i18n="install.verify.troubleshoot.ollama.fix2">正在运行</span>
             </div>
         </div>
 
         
         <!-- 技能扩展 -->
         <div class="section" id="skills">
-            <h2>🧩 技能扩展</h2>
-            <p>OpenClaw 支持通过 ClawHub 安装额外技能，扩展 AI 助手的能力边界。</p>
+            <h2 data-i18n="skills.title">🧩 技能扩展</h2>
+            <p data-i18n="skills.description">OpenClaw 支持通过 ClawHub 安装额外技能，扩展 AI 助手的能力边界。</p>
             
             <div class="info">
-                <strong>🌐 技能市场：</strong><a href="https://clawhub.ai" target="_blank">clawhub.ai</a> - 发现和安装社区技能
+                <strong data-i18n="skills.market">🌐 技能市场：</strong><a href="https://clawhub.ai" target="_blank">clawhub.ai</a> - <span data-i18n="skills.market.desc">发现和安装社区技能</span>
             </div>
             
-            <h3>📦 热门技能推荐</h3>
+            <h3 data-i18n="skills.popular">📦 热门技能推荐</h3>
             
             <div class="tabs">
-                <button class="tab-btn active" onclick="switchTab(event, 'skill-files')">文件管理</button>
-                <button class="tab-btn" onclick="switchTab(event, 'skill-web')">网页浏览</button>
-                <button class="tab-btn" onclick="switchTab(event, 'skill-calendar')">日历/邮件</button>
-                <button class="tab-btn" onclick="switchTab(event, 'skill-custom')">自定义技能</button>
+                <button class="tab-btn active" onclick="switchTab(event, 'skill-files')" data-i18n="skills.fileManager">文件管理</button>
+                <button class="tab-btn" onclick="switchTab(event, 'skill-web')" data-i18n="skills.webBrowse">网页浏览</button>
+                <button class="tab-btn" onclick="switchTab(event, 'skill-calendar')" data-i18n="skills.calendar">日历/邮件</button>
+                <button class="tab-btn" onclick="switchTab(event, 'skill-custom')" data-i18n="skills.custom">自定义技能</button>
             </div>
             
             <div id="skill-files" class="tab-content active">
-                <h4>📁 文件管理技能</h4>
-                <p>让 AI 助手可以读写、整理、搜索你的文件。</p>
+                <h4 data-i18n="skills.fileManager.title">📁 文件管理技能</h4>
+                <p data-i18n="skills.fileManager.desc">让 AI 助手可以读写、整理、搜索你的文件。</p>
                 <ul>
-                    <li><strong>功能：</strong>文件搜索、批量重命名、内容提取、格式转换</li>
-                    <li><strong>适用场景：</strong>文档整理、代码管理、数据分析</li>
+                    <li><strong data-i18n="skills.fileManager.features">功能：</strong><span data-i18n="skills.fileManager.features.list">文件搜索、批量重命名、内容提取、格式转换</span></li>
+                    <li><strong data-i18n="skills.fileManager.useCases">适用场景：</strong><span data-i18n="skills.fileManager.useCases.list">文档整理、代码管理、数据分析</span></li>
                 </ul>
                 <pre><code class="language-bash"># 安装文件管理技能
 openclaw skills install file-manager
@@ -2147,10 +2322,10 @@ rm -rf ~/.config/claw</code></pre>
             <table>
                 <thead>
                     <tr>
-                        <th>使用场景</th>
-                        <th>推荐模型</th>
-                        <th>显存需求</th>
-                        <th>响应速度</th>
+                        <th data-i18n="performance.scenario">使用场景</th>
+                        <th data-i18n="performance.recommended">推荐模型</th>
+                        <th data-i18n="performance.vram">显存需求</th>
+                        <th data-i18n="performance.speed">响应速度</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -2447,19 +2622,19 @@ kill -9 &lt;进程 ID&gt;</code></pre>
         </div>
 
         <footer>
-            <p>Generated by OpenClaw 🦞</p>
-            <p>适用版本：OpenClaw 2026.3.24+ | 最后更新：2026 年 4 月 2 日</p>
-            <p style="margin-top: 15px; font-size: 0.85em; opacity: 0.8;">
+            <p data-i18n="footer.generated">Generated by OpenClaw 🦞</p>
+            <p data-i18n="footer.version">适用版本：OpenClaw 2026.3.24+ | 最后更新：2026 年 4 月 2 日</p>
+            <p style="margin-top: 15px; font-size: 0.85em; opacity: 0.8;" data-i18n="footer.security">
                 <strong>⚠️ 安全提示：</strong>请妥善保管 API Key、App Secret 等敏感信息，不要泄露给他人。
             </p>
-            <p style="margin-top: 10px; font-size: 0.8em; opacity: 0.7;">
+            <p style="margin-top: 10px; font-size: 0.8em; opacity: 0.7;" data-i18n="footer.disclaimer">
                 <strong>免责声明：</strong>本教程仅供参考，请根据自身情况谨慎操作。因操作不当造成的损失，作者不承担责任。
             </p>
             <p style="margin-top: 15px; font-size: 0.85em;">
-                <a href="openclaw-intro.html#intro">🏠 首页</a> | 
-                <a href="about.html">ℹ️ 关于我们</a> | 
+                <a href="openclaw-intro.html#intro" data-i18n="nav.home">🏠 首页</a> | 
+                <a href="about.html" data-i18n="nav.about">ℹ️ 关于我们</a> | 
                 <a href="privacy-policy.html">🔒 隐私政策</a> | 
-                <a href="#intro">↑ 返回顶部</a>
+                <a href="#intro" data-i18n="nav.backTop">↑ 返回顶部</a>
             </p>
         </footer>
     </div>
@@ -2492,6 +2667,25 @@ kill -9 &lt;进程 ID&gt;</code></pre>
                 document.body.classList.add('dark-mode');
                 document.querySelector('.theme-toggle').textContent = '☀️';
             }
+        })();
+        
+        // 语言切换功能
+        function switchLang(lang) {
+            if (window.I18N) {
+                window.I18N.setLang(lang);
+            }
+            // 更新按钮状态
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
+        }
+        
+        // 加载保存的语言设置
+        (function() {
+            const savedLang = localStorage.getItem('openclaw-language') || 'zh';
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === savedLang);
+            });
         })();
         
         // 目录切换
