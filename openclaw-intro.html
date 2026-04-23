@@ -1043,7 +1043,7 @@
         <!-- 介绍 -->
         <div class="section" id="intro">
             <h2 data-i18n="intro.whatIs">📖 什么是 OpenClaw？</h2>
-            <p><strong data-i18n="intro.whatIs.desc">OpenClaw 是一个</strong><strong>开源、本地优先</strong><strong data-i18n="intro.whatIs.mid">的 AI 助手框架，运行在你自己的设备上。与 ChatGPT、Claude 等云端服务不同，OpenClaw 将数据完全保留在本地，让你拥有真正的</strong><strong data-i18n="intro.whatIs.em">数据主权</strong><strong data-i18n="intro.whatIs.end">。</strong></p>
+            <p><strong data-i18n="intro.whatIs.desc">OpenClaw 是一个开源、本地优先</strong><strong data-i18n="intro.whatIs.mid">的 AI 助手框架，运行在你自己的设备上。与 ChatGPT、Claude 等云端服务不同，OpenClaw 将数据完全保留在本地，让你拥有真正的</strong><strong data-i18n="intro.whatIs.em">数据主权</strong><strong data-i18n="intro.whatIs.end">。</strong></p>
             
             <div class="info">
                 <strong data-i18n="intro.coreIdea">🎯 核心理念：</strong><span data-i18n="intro.coreIdea.desc">AI 助手应该是你的私人工具，而不是将你数据上传云端的服务。</span>
@@ -1155,7 +1155,7 @@
             <h3 data-i18n="intro.quickStart">🚀 5 分钟快速开始</h3>
             <div class="step">
                 <strong data-i18n="install.step1">步骤 1：安装 Node.js</strong>
-                <p data-i18n="install.nodejs.desc">访问 <a href="https://nodejs.org/" target="_blank">nodejs.org</a> 下载并安装 v22+ 版本。</p>
+                <p><span data-i18n="install.nodejs.desc">访问</span> <a href="https://nodejs.org/" target="_blank">nodejs.org</a> <span data-i18n="install.nodejs.desc2">下载并安装 v22+ 版本。</span></p>
             </div>
             
             <div class="step">
@@ -1172,7 +1172,7 @@
             <div class="step">
                 <strong data-i18n="install.step4">步骤 4：开始对话</strong>
                 <pre><code class="language-bash">openclaw chat</code></pre>
-                <p data-i18n="install.startChat.desc">或打开浏览器访问 <code>http://localhost:18789</code></p>
+                <p><span data-i18n="install.startChat.desc">或打开浏览器访问</span> <code>http://localhost:18789</code></p>
             </div>
             
             <div class="success" data-i18n="install.complete">
@@ -1272,7 +1272,7 @@
 
         <!-- 安装 -->
         <div class="section" id="install">
-            <h2>🚀 安装与配置</h2>
+            <h2 data-i18n="install.title">🚀 安装与配置</h2>
             
             <h3>⚙️ <span data-i18n="install.prerequisites">前置条件</span></h3>
             <div class="warning">
@@ -1331,7 +1331,7 @@
             <div class="tabs">
                 <button class="tab-btn active" onclick="switchTab(event, 'npm-install')" data-i18n="install.npm">npm 安装</button>
                 <button class="tab-btn" onclick="switchTab(event, 'source-install')" data-i18n="install.source">源码安装</button>
-                <button class="tab-btn" onclick="switchTab(event, 'docker-install')">Docker</button>
+                <button class="tab-btn" onclick="switchTab(event, 'docker-install')" data-i18n="install.docker">Docker</button>
             </div>
             
             <div id="npm-install" class="tab-content active">
@@ -1412,6 +1412,9 @@ npm link</code></pre>
             
             <div class="info">
                 <strong data-i18n="config.ai.configLocation">📁 配置文件位置：</strong><br>
+                • <span data-i18n="install.wizard.configLocation.win">Windows</span>: <code>%USERPROFILE%\.openclaw\openclaw.json</code><br>
+                • <span data-i18n="install.wizard.configLocation.unix">macOS/Linux</span>: <code>~/.openclaw/openclaw.json</code>
+            </div>
                 • <span data-i18n="install.wizard.configLocation.win">Windows</span>: <code>%USERPROFILE%\.openclaw\openclaw.json</code><br>
                 • <span data-i18n="install.wizard.configLocation.unix">macOS/Linux</span>: <code>~/.openclaw/openclaw.json</code>
             </div>
@@ -1856,91 +1859,91 @@ openclaw skills install file-manager
             </div>
             
             <div id="skill-web" class="tab-content">
-                <h4>🌐 网页浏览技能</h4>
-                <p>让 AI 助手可以访问网页、搜索信息、抓取内容。</p>
+                <h4 data-i18n="skills.webBrowse.title">🌐 网页浏览技能</h4>
+                <p data-i18n="skills.webBrowse.desc">让 AI 助手可以访问网页、搜索信息、抓取内容。</p>
                 <ul>
-                    <li><strong>功能：</strong>网页抓取、搜索引擎、内容摘要、链接追踪</li>
-                    <li><strong>适用场景：</strong>信息收集、竞品分析、新闻聚合</li>
+                    <li><strong data-i18n="skills.webBrowse.features">功能：</strong><span data-i18n="skills.webBrowse.features.list">网页抓取、搜索引擎、内容摘要、链接追踪</span></li>
+                    <li><strong data-i18n="skills.webBrowse.useCases">适用场景：</strong><span data-i18n="skills.webBrowse.useCases.list">信息收集、竞品分析、新闻聚合</span></li>
                 </ul>
-                <pre><code class="language-bash"># 安装网页浏览技能
+                <pre><code class="language-bash"># <span data-i18n="skills.webBrowse.install">安装网页浏览技能</span>
 openclaw skills install web-browse
 
-# 使用示例
-# "搜索最新的 AI 新闻"
-# "帮我总结这个网页的内容：https://example.com"</code></pre>
+# <span data-i18n="skills.examples">使用示例</span>
+# "<span data-i18n="skills.webBrowse.example1">搜索最新的 AI 新闻</span>"
+# "<span data-i18n="skills.webBrowse.example2">帮我总结这个网页的内容：https://example.com</span>"</code></pre>
             </div>
             
             <div id="skill-calendar" class="tab-content">
-                <h4>📅 日历/邮件技能</h4>
-                <p>连接你的日历和邮箱，实现智能日程管理和邮件处理。</p>
+                <h4 data-i18n="skills.calendar.title">📅 日历/邮件技能</h4>
+                <p data-i18n="skills.calendar.desc">连接你的日历和邮箱，实现智能日程管理和邮件处理。</p>
                 <ul>
-                    <li><strong>功能：</strong>日程提醒、会议安排、邮件分类、自动回复</li>
-                    <li><strong>适用场景：</strong>时间管理、邮件整理、会议协调</li>
+                    <li><strong data-i18n="skills.calendar.features">功能：</strong><span data-i18n="skills.calendar.features.list">日程提醒、会议安排、邮件分类、自动回复</span></li>
+                    <li><strong data-i18n="skills.calendar.useCases">适用场景：</strong><span data-i18n="skills.calendar.useCases.list">时间管理、邮件整理、会议协调</span></li>
                 </ul>
-                <pre><code class="language-bash"># 安装日历技能
+                <pre><code class="language-bash"># <span data-i18n="skills.calendar.install">安装日历技能</span>
 openclaw skills install calendar
 
-# 安装邮件技能
+# <span data-i18n="skills.email.install">安装邮件技能</span>
 openclaw skills install email
 
-# 使用示例
-# "今天下午有什么会议？"
-# "帮我回复这封邮件，说我会参加"</code></pre>
+# <span data-i18n="skills.examples">使用示例</span>
+# "<span data-i18n="skills.calendar.example1">今天下午有什么会议？</span>"
+# "<span data-i18n="skills.email.example1">帮我回复这封邮件，说我会参加</span>"</code></pre>
             </div>
             
             <div id="skill-custom" class="tab-content">
-                <h4>🛠️ 自定义技能</h4>
-                <p>创建属于你自己的技能，满足特定需求。</p>
+                <h4 data-i18n="skills.custom.title">🛠️ 自定义技能</h4>
+                <p data-i18n="skills.custom.desc">创建属于你自己的技能，满足特定需求。</p>
                 <ul>
-                    <li><strong>技能结构：</strong>SKILL.md + 脚本/引用文件</li>
-                    <li><strong>支持语言：</strong>JavaScript、Python、Shell 等</li>
-                    <li><strong>发布流程：</strong>创建 → 测试 → 提交到 ClawHub</li>
+                    <li><strong data-i18n="skills.custom.structure">技能结构：</strong><span data-i18n="skills.custom.structure.desc">SKILL.md + 脚本/引用文件</span></li>
+                    <li><strong data-i18n="skills.custom.languages">支持语言：</strong><span data-i18n="skills.custom.languages.list">JavaScript、Python、Shell 等</span></li>
+                    <li><strong data-i18n="skills.custom.publish">发布流程：</strong><span data-i18n="skills.custom.publish.desc">创建 → 测试 → 提交到 ClawHub</span></li>
                 </ul>
-                <pre><code class="language-bash"># 创建新技能
+                <pre><code class="language-bash"># <span data-i18n="skills.custom.create">创建新技能</span>
 openclaw skills create my-skill
 
-# 技能目录结构
+# <span data-i18n="skills.custom.dirStructure">技能目录结构</span>
 my-skill/
-├── SKILL.md        # 技能描述和触发条件
-├── scripts/        # 执行脚本
-├── references/     # 参考文件
-└── package.json    # 技能元数据
+├── SKILL.md        # <span data-i18n="skills.custom.skillmd">技能描述和触发条件</span>
+├── scripts/        # <span data-i18n="skills.custom.scripts">执行脚本</span>
+├── references/     # <span data-i18n="skills.custom.references">参考文件</span>
+└── package.json    # <span data-i18n="skills.custom.metadata">技能元数据</span>
 
-# 本地测试
+# <span data-i18n="skills.custom.localTest">本地测试</span>
 openclaw skills link ./my-skill
 
-# 发布到 ClawHub
+# <span data-i18n="skills.custom.publishCmd">发布到 ClawHub</span>
 openclaw skills publish</code></pre>
                 <div class="info">
-                    📚 <strong>技能开发文档：</strong><a href="https://docs.openclaw.ai/skills" target="_blank">docs.openclaw.ai/skills</a>
+                    📚 <strong data-i18n="skills.custom.docs">技能开发文档：</strong><a href="https://docs.openclaw.ai/skills" target="_blank">docs.openclaw.ai/skills</a>
                 </div>
             </div>
             
-            <h3>🔧 技能管理命令</h3>
+            <h3 data-i18n="skills.commands.title">🔧 技能管理命令</h3>
             <table>
                 <tr>
-                    <th>命令</th>
-                    <th>说明</th>
+                    <th data-i18n="skills.commands.cmd">命令</th>
+                    <th data-i18n="skills.commands.desc">说明</th>
                 </tr>
                 <tr>
                     <td><code>openclaw skills list</code></td>
-                    <td>列出已安装的技能</td>
+                    <td data-i18n="skills.commands.list">列出已安装的技能</td>
                 </tr>
                 <tr>
                     <td><code>openclaw skills install &lt;name&gt;</code></td>
-                    <td>安装新技能</td>
+                    <td data-i18n="skills.commands.install">安装新技能</td>
                 </tr>
                 <tr>
                     <td><code>openclaw skills update &lt;name&gt;</code></td>
-                    <td>更新技能</td>
+                    <td data-i18n="skills.commands.update">更新技能</td>
                 </tr>
                 <tr>
                     <td><code>openclaw skills remove &lt;name&gt;</code></td>
-                    <td>卸载技能</td>
+                    <td data-i18n="skills.commands.remove">卸载技能</td>
                 </tr>
                 <tr>
                     <td><code>openclaw skills search &lt;query&gt;</code></td>
-                    <td>搜索 ClawHub 上的技能</td>
+                    <td data-i18n="skills.commands.search">搜索 ClawHub 上的技能</td>
                 </tr>
             </table>
         </div>
@@ -1958,55 +1961,55 @@ openclaw skills publish</code></pre>
 
 <!-- 飞书接入 -->
         <div class="section" id="feishu">
-            <h2>📱 接入飞书</h2>
+            <h2 data-i18n="feishu.title">📱 接入飞书</h2>
             
-            <div class="warning">
-                <strong>⚠️ 版本要求：</strong>OpenClaw v2026.2.26+ | 需要飞书企业账号和开放平台管理员权限
+            <div class="warning" data-i18n="feishu.version">
+                ⚠️ 版本要求：OpenClaw v2026.2.26+ | 需要飞书企业账号和开放平台管理员权限
             </div>
             
-            <h3>📋 前置条件</h3>
+            <h3 data-i18n="feishu.prerequisites">📋 前置条件</h3>
             <ul>
-                <li>OpenClaw 版本 ≥ v2026.2.26</li>
-                <li>飞书企业账号（个人版功能受限）</li>
-                <li>飞书开放平台管理员权限</li>
-                <li>已完成的 OpenClaw 基础配置</li>
+                <li data-i18n="feishu.prereq.1">OpenClaw 版本 ≥ v2026.2.26</li>
+                <li data-i18n="feishu.prereq.2">飞书企业账号（个人版功能受限）</li>
+                <li data-i18n="feishu.prereq.3">飞书开放平台管理员权限</li>
+                <li data-i18n="feishu.prereq.4">已完成的 OpenClaw 基础配置</li>
             </ul>
             
-            <h3>🔧 飞书应用创建</h3>
+            <h3 data-i18n="feishu.createApp">🔧 飞书应用创建</h3>
             
             <div class="step">
-                <strong>步骤 1：访问飞书开放平台</strong>
-                <p>前往 <a href="https://open.feishu.cn/app" target="_blank">open.feishu.cn/app</a> 并登录企业账号。</p>
+                <strong data-i18n="feishu.step1.title">步骤 1：访问飞书开放平台</strong>
+                <p><span data-i18n="feishu.step1.desc">前往</span> <a href="https://open.feishu.cn/app" target="_blank">open.feishu.cn/app</a> <span data-i18n="feishu.step1.desc2">并登录企业账号。</span></p>
             </div>
             
             <div class="step">
-                <strong>步骤 2：创建企业自建应用</strong>
+                <strong data-i18n="feishu.step2.title">步骤 2：创建企业自建应用</strong>
                 <ol>
-                    <li>点击「创建企业自建应用」</li>
-                    <li>选择「机器人」类型</li>
-                    <li>填写应用名称（如：OpenClaw Assistant）</li>
-                    <li>上传应用图标（可选）</li>
-                    <li>点击「创建」</li>
+                    <li data-i18n="feishu.step2.1">点击「创建企业自建应用」</li>
+                    <li data-i18n="feishu.step2.2">选择「机器人」类型</li>
+                    <li data-i18n="feishu.step2.3">填写应用名称（如：OpenClaw Assistant）</li>
+                    <li data-i18n="feishu.step2.4">上传应用图标（可选）</li>
+                    <li data-i18n="feishu.step2.5">点击「创建」</li>
                 </ol>
             </div>
             
             <div class="step">
-                <strong>步骤 3：获取凭证</strong>
-                <p>在应用管理页面：</p>
+                <strong data-i18n="feishu.step3.title">步骤 3：获取凭证</strong>
+                <p data-i18n="feishu.step3.desc">在应用管理页面：</p>
                 <ul>
-                    <li><strong>App ID：</strong> 显示为 <code>cli_xxxxxxxxxxxxx</code> 格式</li>
-                    <li><strong>App Secret：</strong> 点击「查看」并验证后获取</li>
+                    <li><strong data-i18n="feishu.appId">App ID：</strong> <span data-i18n="feishu.appId.desc">显示为 <code>cli_xxxxxxxxxxxxx</code> 格式</span></li>
+                    <li><strong data-i18n="feishu.appSecret">App Secret：</strong> <span data-i18n="feishu.appSecret.desc">点击「查看」并验证后获取</span></li>
                 </ul>
                 <div class="info">
-                    💡 <strong>位置：</strong>应用管理 → 凭证与基础信息 → App ID / App Secret
+                    💡 <strong data-i18n="feishu.location.title">位置：</strong><span data-i18n="feishu.location.desc">应用管理 → 凭证与基础信息 → App ID / App Secret</span>
                 </div>
             </div>
             
-            <h3>🔐 应用权限配置</h3>
-            <p>在飞书开放平台「权限管理」页面，添加以下权限：</p>
+            <h3 data-i18n="feishu.permissions">🔐 应用权限配置</h3>
+            <p data-i18n="feishu.permissions.desc">在飞书开放平台「权限管理」页面，添加以下权限：</p>
             
             <div class="config-box">
-                <h5>必需权限列表</h5>
+                <h5 data-i18n="feishu.permissions.required">必需权限列表</h5>
                 <span class="permission-tag">im:message</span>
                 <span class="permission-tag">im:chat</span>
                 <span class="permission-tag">im:resource</span>
@@ -2016,78 +2019,78 @@ openclaw skills publish</code></pre>
             </div>
             
             <details>
-                <summary>📋 权限说明</summary>
+                <summary data-i18n="feishu.permissions.summary">📋 权限说明</summary>
                 <div class="content">
                     <table>
                         <tr>
                             <td><code>im:message</code></td>
-                            <td>发送和接收消息（必需）</td>
+                            <td data-i18n="feishu.perm.im.message">发送和接收消息（必需）</td>
                         </tr>
                         <tr>
                             <td><code>im:chat</code></td>
-                            <td>管理会话信息</td>
+                            <td data-i18n="feishu.perm.im.chat">管理会话信息</td>
                         </tr>
                         <tr>
                             <td><code>im:resource</code></td>
-                            <td>访问消息中的资源（图片、文件）</td>
+                            <td data-i18n="feishu.perm.im.resource">访问消息中的资源（图片、文件）</td>
                         </tr>
                         <tr>
                             <td><code>contact:contact:readonly</code></td>
-                            <td>读取联系人信息（可选）</td>
+                            <td data-i18n="feishu.perm.contact">读取联系人信息（可选）</td>
                         </tr>
                         <tr>
                             <td><code>docs:document.content:read</code></td>
-                            <td>读取飞书文档内容</td>
+                            <td data-i18n="feishu.perm.docs">读取飞书文档内容</td>
                         </tr>
                         <tr>
                             <td><code>wiki:wiki:readonly</code></td>
-                            <td>读取知识库内容</td>
+                            <td data-i18n="feishu.perm.wiki">读取知识库内容</td>
                         </tr>
                     </table>
                 </div>
             </details>
             
-            <h3>📡 事件订阅</h3>
+            <h3 data-i18n="feishu.events">📡 事件订阅</h3>
             
             <div class="warning">
-                <strong>⚠️ 重要：</strong>必须选择 <strong>WebSocket 模式</strong>（长连接），无需配置回调 URL！
+                <strong data-i18n="feishu.events.important">⚠️ 重要：</strong><span data-i18n="feishu.events.websocket">必须选择 <strong>WebSocket 模式</strong>（长连接），无需配置回调 URL！</span>
             </div>
             
             <div class="step">
-                <strong>配置步骤</strong>
+                <strong data-i18n="feishu.events.steps.title">配置步骤</strong>
                 <ol>
-                    <li>在开放平台开启「事件订阅」</li>
-                    <li>选择 <strong>WebSocket</strong> 连接模式</li>
-                    <li>订阅事件：<code>im.message.receive_v1</code></li>
-                    <li>配置加密密钥（记录保存，用于验证消息）</li>
-                    <li>保存配置</li>
+                    <li data-i18n="feishu.events.steps.1">在开放平台开启「事件订阅」</li>
+                    <li data-i18n="feishu.events.steps.2">选择 <strong>WebSocket</strong> 连接模式</li>
+                    <li><span data-i18n="feishu.events.steps.3">订阅事件：</span> <code>im.message.receive_v1</code></li>
+                    <li data-i18n="feishu.events.steps.4">配置加密密钥（记录保存，用于验证消息）</li>
+                    <li data-i18n="feishu.events.steps.5">保存配置</li>
                 </ol>
             </div>
             
-            <h3>⚙️ OpenClaw 端配置</h3>
+            <h3 data-i18n="feishu.config">⚙️ OpenClaw 端配置</h3>
             
             <div class="tabs">
-                <button class="tab-btn active" onclick="switchTab(event, 'cli-config')">CLI 配置</button>
-                <button class="tab-btn" onclick="switchTab(event, 'file-config')">配置文件</button>
-                <button class="tab-btn" onclick="switchTab(event, 'env-config')">环境变量</button>
+                <button class="tab-btn active" onclick="switchTab(event, 'cli-config')" data-i18n="feishu.config.cli">CLI 配置</button>
+                <button class="tab-btn" onclick="switchTab(event, 'file-config')" data-i18n="feishu.config.file">配置文件</button>
+                <button class="tab-btn" onclick="switchTab(event, 'env-config')" data-i18n="feishu.config.env">环境变量</button>
             </div>
             
             <div id="cli-config" class="tab-content active">
                 <div class="step">
-                    <strong>使用交互式 CLI</strong>
+                    <strong data-i18n="feishu.config.cli.title">使用交互式 CLI</strong>
                     <pre><code class="language-bash">openclaw channels add feishu</code></pre>
-                    <p>按提示输入：</p>
+                    <p data-i18n="feishu.config.cli.desc">按提示输入：</p>
                     <ul>
-                        <li>App ID</li>
-                        <li>App Secret</li>
-                        <li>连接模式（选择 WebSocket）</li>
+                        <li data-i18n="feishu.config.cli.input1">App ID</li>
+                        <li data-i18n="feishu.config.cli.input2">App Secret</li>
+                        <li data-i18n="feishu.config.cli.input3">连接模式（选择 WebSocket）</li>
                     </ul>
                 </div>
             </div>
             
             <div id="file-config" class="tab-content">
                 <div class="step">
-                    <strong>编辑配置文件</strong>
+                    <strong data-i18n="feishu.config.file.title">编辑配置文件</strong>
                     <pre><code class="language-json">// ~/.openclaw/openclaw.json
 {
   "channels": {
@@ -2115,7 +2118,7 @@ openclaw skills publish</code></pre>
             
             <div id="env-config" class="tab-content">
                 <div class="step">
-                    <strong>使用环境变量</strong>
+                    <strong data-i18n="feishu.config.env.title">使用环境变量</strong>
                     <pre><code class="language-bash"># ~/.openclaw/.env
 OPENCLAW_FEISHU_ENABLED=true
 OPENCLAW_FEISHU_APP_ID=cli_a94d372767385bb7
@@ -2123,49 +2126,49 @@ OPENCLAW_FEISHU_APP_SECRET=你的 App Secret
 OPENCLAW_FEISHU_CONNECTION_MODE=websocket</code></pre>
                 </div>
             </div>            
-            <h3>🚀 发布与测试</h3>
+            <h3 data-i18n="feishu.publish">🚀 发布与测试</h3>
             
             <div class="step">
-                <strong>步骤 1：创建版本</strong>
+                <strong data-i18n="feishu.publish.step1.title">步骤 1：创建版本</strong>
                 <ol>
-                    <li>在飞书开放平台点击「版本管理与发布」</li>
-                    <li>点击「创建新版本」</li>
-                    <li>填写版本说明</li>
-                    <li>提交审核（通常自动通过）</li>
+                    <li data-i18n="feishu.publish.step1.1">在飞书开放平台点击「版本管理与发布」</li>
+                    <li data-i18n="feishu.publish.step1.2">点击「创建新版本」</li>
+                    <li data-i18n="feishu.publish.step1.3">填写版本说明</li>
+                    <li data-i18n="feishu.publish.step1.4">提交审核（通常自动通过）</li>
                 </ol>
             </div>
             
             <div class="step">
-                <strong>步骤 2：发布应用</strong>
+                <strong data-i18n="feishu.publish.step2.title">步骤 2：发布应用</strong>
                 <pre><code class="language-bash">openclaw gateway restart</code></pre>
             </div>
             
             <div class="step">
-                <strong>步骤 3：添加到飞书</strong>
+                <strong data-i18n="feishu.publish.step3.title">步骤 3：添加到飞书</strong>
                 <ol>
-                    <li>在飞书客户端左侧栏点击「+」</li>
-                    <li>搜索你的应用名称</li>
-                    <li>点击「添加」</li>
+                    <li data-i18n="feishu.publish.step3.1">在飞书客户端左侧栏点击「+」</li>
+                    <li data-i18n="feishu.publish.step3.2">搜索你的应用名称</li>
+                    <li data-i18n="feishu.publish.step3.3">点击「添加」</li>
                 </ol>
             </div>
             
             <div class="step">
-                <strong>步骤 4：测试机器人</strong>
+                <strong data-i18n="feishu.publish.step4.title">步骤 4：测试机器人</strong>
                 <ul>
-                    <li><strong>私聊测试：</strong>发送「你好」，应收到回复</li>
-                    <li><strong>群聊测试：</strong>在群中 <code>@OpenClaw</code> 发送消息</li>
-                    <li><strong>命令测试：</strong>发送 <code>/help</code> 查看可用命令</li>
+                    <li><strong data-i18n="feishu.test.dm">私聊测试：</strong><span data-i18n="feishu.test.dm.desc">发送「你好」，应收到回复</span></li>
+                    <li><strong data-i18n="feishu.test.group">群聊测试：</strong><span data-i18n="feishu.test.group.desc">在群中 <code>@OpenClaw</code> 发送消息</span></li>
+                    <li><strong data-i18n="feishu.test.cmd">命令测试：</strong><span data-i18n="feishu.test.cmd.desc">发送 <code>/help</code> 查看可用命令</span></li>
                 </ul>
             </div>
             
-            <div class="success">
+            <div class="success" data-i18n="feishu.success">
                 ✅ 如果收到回复，说明接入成功！
             </div>
             
-            <h3>🔗 配对流程（可选）</h3>
-            <p>如需将飞书与 OpenClaw 深度集成，可使用配对功能：</p>
+            <h3 data-i18n="feishu.pairing">🔗 配对流程（可选）</h3>
+            <p data-i18n="feishu.pairing.desc">如需将飞书与 OpenClaw 深度集成，可使用配对功能：</p>
             <pre><code class="language-bash">openclaw pair feishu</code></pre>
-            <p>按提示完成 OAuth 授权流程。</p>
+            <p data-i18n="feishu.pairing.oauth">按提示完成 OAuth 授权流程。</p>
         </div>
 
         <!-- 文中广告位 2 -->
@@ -2175,150 +2178,150 @@ OPENCLAW_FEISHU_CONNECTION_MODE=websocket</code></pre>
 
         <!-- 卸载 -->
         <div class="section" id="uninstall">
-            <h2>🗑️ 删除/卸载</h2>
+            <h2 data-i18n="uninstall.title">🗑️ 删除/卸载</h2>
             
             <div class="danger">
-                <strong>⚠️ 警告：</strong> 卸载将删除所有配置、记忆和聊天记录！请提前备份重要数据。
+                <strong data-i18n="uninstall.warning">⚠️ 警告：卸载将删除所有配置、记忆和聊天记录！请提前备份重要数据。</strong>
             </div>
             
-            <h3>📌 标准卸载流程（CLI 可用时）</h3>
+            <h3 data-i18n="uninstall.standard">📌 标准卸载流程（CLI 可用时）</h3>
             
             <div class="tabs">
-                <button class="tab-btn active" onclick="switchTab(event, 'interactive-uninstall')">交互式卸载</button>
-                <button class="tab-btn" onclick="switchTab(event, 'auto-uninstall')">自动卸载</button>
+                <button class="tab-btn active" onclick="switchTab(event, 'interactive-uninstall')" data-i18n="uninstall.interactive">交互式卸载</button>
+                <button class="tab-btn" onclick="switchTab(event, 'auto-uninstall')" data-i18n="uninstall.auto">自动卸载</button>
             </div>
             
             <div id="interactive-uninstall" class="tab-content active">
                 <div class="step">
-                    <strong>推荐：使用官方卸载命令</strong>
+                    <strong data-i18n="uninstall.recommended">推荐：使用官方卸载命令</strong>
                     <pre><code class="language-bash">openclaw uninstall</code></pre>
-                    <p>按提示确认卸载选项。</p>
+                    <p data-i18n="uninstall.followPrompts">按提示确认卸载选项。</p>
                 </div>
             </div>
             
             <div id="auto-uninstall" class="tab-content">
                 <div class="step">
-                    <strong>自动化卸载（无提示）</strong>
+                    <strong data-i18n="uninstall.automation">自动化卸载（无提示）</strong>
                     <pre><code class="language-bash">openclaw uninstall --all --yes --non-interactive</code></pre>
-                    <div class="danger">
+                    <div class="danger" data-i18n="uninstall.danger">
                         ⚠️ 此命令会删除所有内容，不会二次确认！
                     </div>
                 </div>
             </div>
             
-            <h3>🔧 手动卸载步骤（CLI 不可用时）</h3>
+            <h3 data-i18n="uninstall.manualSteps">🔧 手动卸载步骤（CLI 不可用时）</h3>
             
             <div class="tabs">
-                <button class="tab-btn active" onclick="switchTab(event, 'win-uninstall')">Windows</button>
-                <button class="tab-btn" onclick="switchTab(event, 'mac-uninstall')">macOS</button>
-                <button class="tab-btn" onclick="switchTab(event, 'linux-uninstall')">Linux</button>
+                <button class="tab-btn active" onclick="switchTab(event, 'win-uninstall')" data-i18n="uninstall.windows">Windows</button>
+                <button class="tab-btn" onclick="switchTab(event, 'mac-uninstall')" data-i18n="uninstall.macos">macOS</button>
+                <button class="tab-btn" onclick="switchTab(event, 'linux-uninstall')" data-i18n="uninstall.linux">Linux</button>
             </div>
             
             <div id="win-uninstall" class="tab-content active">
                 <div class="step">
-                    <strong>步骤 1：停止网关服务</strong>
+                    <strong data-i18n="uninstall.step1">步骤 1：停止网关服务</strong>
                     <pre><code class="language-powershell">openclaw gateway stop</code></pre>
                 </div>
                 
                 <div class="step">
-                    <strong>步骤 2：删除计划任务</strong>
+                    <strong data-i18n="uninstall.step2">步骤 2：删除计划任务</strong>
                     <pre><code class="language-powershell">schtasks /delete /tn "OpenClaw Gateway" /f</code></pre>
                 </div>
                 
                 <div class="step">
-                    <strong>步骤 3：删除服务文件</strong>
+                    <strong data-i18n="uninstall.step3">步骤 3：删除服务文件</strong>
                     <pre><code class="language-powershell">del "%APPDATA%\openclaw\gateway.cmd"
 rmdir /s "%USERPROFILE%\.openclaw"
 rmdir /s "%APPDATA%\openclaw"</code></pre>
                 </div>
                 
                 <div class="step">
-                    <strong>步骤 4：卸载 npm 包</strong>
+                    <strong data-i18n="uninstall.step4">步骤 4：卸载 npm 包</strong>
                     <pre><code class="language-bash">npm uninstall -g openclaw</code></pre>
                 </div>
             </div>
             
             <div id="mac-uninstall" class="tab-content">
                 <div class="step">
-                    <strong>步骤 1：停止服务</strong>
+                    <strong data-i18n="uninstall.step1">步骤 1：停止服务</strong>
                     <pre><code class="language-bash">openclaw gateway stop</code></pre>
                 </div>
                 
                 <div class="step">
-                    <strong>步骤 2：移除 launchd 服务</strong>
+                    <strong data-i18n="uninstall.removeLaunchd">步骤 2：移除 launchd 服务</strong>
                     <pre><code class="language-bash">launchctl bootout gui/$(id -u)/~/Library/LaunchAgents/com.openclaw.gateway.plist
 rm ~/Library/LaunchAgents/com.openclaw.gateway.plist</code></pre>
                 </div>
                 
                 <div class="step">
-                    <strong>步骤 3：删除配置目录</strong>
+                    <strong data-i18n="uninstall.deleteConfig">步骤 3：删除配置目录</strong>
                     <pre><code class="language-bash">rm -rf ~/.openclaw
 rm -rf ~/Library/Application\ Support/openclaw</code></pre>
                 </div>
                 
                 <div class="step">
-                    <strong>步骤 4：卸载 npm 包</strong>
+                    <strong data-i18n="uninstall.step4">步骤 4：卸载 npm 包</strong>
                     <pre><code class="language-bash">npm uninstall -g openclaw</code></pre>
                 </div>
             </div>
             
             <div id="linux-uninstall" class="tab-content">
                 <div class="step">
-                    <strong>步骤 1：停止 systemd 服务</strong>
+                    <strong data-i18n="uninstall.step1">步骤 1：停止 systemd 服务</strong>
                     <pre><code class="language-bash">systemctl --user stop openclaw-gateway
 systemctl --user disable openclaw-gateway</code></pre>
                 </div>
                 
                 <div class="step">
-                    <strong>步骤 2：删除服务单元</strong>
+                    <strong data-i18n="uninstall.removeSystemd">步骤 2：删除服务单元</strong>
                     <pre><code class="language-bash">rm ~/.config/systemd/user/openclaw-gateway.service
 systemctl --user daemon-reload</code></pre>
                 </div>
                 
                 <div class="step">
-                    <strong>步骤 3：删除配置目录</strong>
+                    <strong data-i18n="uninstall.deleteConfig">步骤 3：删除配置目录</strong>
                     <pre><code class="language-bash">rm -rf ~/.openclaw
 rm -rf ~/.config/openclaw</code></pre>
                 </div>
                 
                 <div class="step">
-                    <strong>步骤 4：卸载 npm 包</strong>
+                    <strong data-i18n="uninstall.step4">步骤 4：卸载 npm 包</strong>
                     <pre><code class="language-bash">npm uninstall -g openclaw</code></pre>
                 </div>
             </div>
             
-            <h3>🧹 彻底清理</h3>
+            <h3 data-i18n="uninstall.completeCleanup">🧹 彻底清理</h3>
             
             <div class="step">
-                <strong>删除工作区目录</strong>
+                <strong data-i18n="uninstall.deleteWorkspace">删除工作区目录</strong>
                 <pre><code class="language-bash">rm -rf ~/.openclaw/workspace</code></pre>
             </div>
             
             <div class="step">
-                <strong>清理旧版本残留</strong>
+                <strong data-i18n="uninstall.cleanOld">清理旧版本残留</strong>
                 <pre><code class="language-bash">rm -rf ~/.clawdbot
 rm -rf ~/.moltbot
 rm -rf ~/.config/claw</code></pre>
             </div>
             
-            <h3>🔒 安全提醒</h3>
+            <h3 data-i18n="uninstall.securityReminder">🔒 安全提醒</h3>
             <div class="danger">
-                <strong>⚠️ 重要：</strong> 卸载后务必前往各 AI 模型平台轮换或撤销曾使用的 API Key！
+                <strong data-i18n="uninstall.apiKeyWarning">⚠️ 重要：卸载后务必前往各 AI 模型平台轮换或撤销曾使用的 API Key！</strong>
             </div>
             
             <ul>
-                <li><strong>DeepSeek：</strong> <a href="https://platform.deepseek.com/" target="_blank">platform.deepseek.com</a> → API Keys → 删除</li>
-                <li><strong>Kimi (Moonshot)：</strong> <a href="https://platform.moonshot.cn/" target="_blank">platform.moonshot.cn</a> → 密钥管理 → 撤销</li>
-                <li><strong>通义千问：</strong> <a href="https://dashscope.console.aliyun.com/" target="_blank">dashscope.console.aliyun.com</a> → API Key 管理</li>
-                <li><strong>OpenAI：</strong> <a href="https://platform.openai.com/api-keys" target="_blank">platform.openai.com/api-keys</a> → 删除密钥</li>
+                <li><strong data-i18n="uninstall.deepseek">DeepSeek：</strong> <a href="https://platform.deepseek.com/" target="_blank">platform.deepseek.com</a><strong data-i18n="uninstall.deepseek.delete"> → API Keys → 删除 </strong></li>
+                <li><strong data-i18n="uninstall.kimi">Kimi (Moonshot)：</strong> <a href="https://platform.moonshot.cn/" target="_blank">platform.moonshot.cn</a><strong data-i18n="uninstall.kimi.revoke"> → 密钥管理 → 撤销 </strong></li>
+                <li><strong data-i18n="uninstall.qwen">通义千问：</strong> <a href="https://dashscope.console.aliyun.com/" target="_blank">dashscope.console.aliyun.com</a><strong data-i18n="uninstall.qwen.management"> → API Key 管理 </strong></li>
+                <li><strong data-i18n="uninstall.openai">OpenAI：</strong> <a href="https://platform.openai.com/api-keys" target="_blank">platform.openai.com/api-keys</a> <strong data-i18n="uninstall.openai.delete">→ 删除密钥 </strong></li>
             </ul>
         </div>
 
         <!-- 性能优化 -->
         <div class="section" id="performance">
-            <h2>⚡ 性能优化指南</h2>
+            <h2 data-i18n="performance.title">⚡ 性能优化指南</h2>
             
-            <h3>📊 模型选择建议</h3>
+            <h3 data-i18n="performance.modelSelect">📊 模型选择建议</h3>
             <table>
                 <thead>
                     <tr>
@@ -2330,25 +2333,25 @@ rm -rf ~/.config/claw</code></pre>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>日常对话/简单任务</td>
+                        <td data-i18n="performance.rc">日常对话/简单任务</td>
                         <td>Qwen2.5 7B / Llama 3.2 3B</td>
                         <td>4-6 GB</td>
                         <td>⭐⭐⭐⭐⭐</td>
                     </tr>
                     <tr>
-                        <td>代码生成/复杂推理</td>
+                        <td data-i18n="performance.dm">代码生成/复杂推理</td>
                         <td>Qwen2.5 14B / DeepSeek Coder</td>
                         <td>8-12 GB</td>
                         <td>⭐⭐⭐⭐</td>
                     </tr>
                     <tr>
-                        <td>专业写作/分析</td>
+                        <td data-i18n="performance.zy">专业写作/分析</td>
                         <td>Kimi / Claude / GPT-4</td>
-                        <td>N/A (云端)</td>
+                        <td data-i18n="performance.yd">N/A (云端)</td>
                         <td>⭐⭐⭐</td>
                     </tr>
                     <tr>
-                        <td>批量处理/后台任务</td>
+                        <td data-i18n="performance.pl">批量处理/后台任务</td>
                         <td>Phi-3 / TinyLlama</td>
                         <td>2-4 GB</td>
                         <td>⭐⭐⭐⭐⭐</td>
@@ -2356,10 +2359,10 @@ rm -rf ~/.config/claw</code></pre>
                 </tbody>
             </table>
             
-            <h3>🔧 配置优化</h3>
+            <h3 data-i18n="performance.config">🔧 配置优化</h3>
             
             <details>
-                <summary>减少内存占用</summary>
+                <summary data-i18n="performance.reduce">减少内存占用</summary>
                 <div class="content">
                     <pre><code class="language-json">// ~/.openclaw/openclaw.json
 {
@@ -2378,19 +2381,19 @@ rm -rf ~/.config/claw</code></pre>
             </details>
             
             <details>
-                <summary>加快响应速度</summary>
+                <summary data-i18n="performance.speedup">加快响应速度</summary>
                 <div class="content">
                     <ul>
-                        <li><strong>使用流式响应：</strong>默认开启，无需配置</li>
-                        <li><strong>降低 thinking 级别：</strong><code>/thinking off</code></li>
-                        <li><strong>使用本地模型：</strong>避免网络延迟</li>
-                        <li><strong>预热模型：</strong>启动后先发送一条简单消息</li>
+                        <li><strong data-i18n="performance.xy">使用流式响应：</strong ><strong data-i18n="performance.mr">默认开启，无需配置</strong > </li>
+                        <li><strong data-i18n="performance.jdt">降低 thinking 级别：</strong><code><strong>/thinking off</strong></code></li>
+                        <li><strong data-i18n="performance.bd">使用本地模型：</strong><strong data-i18n="performance.bm">避免网络延迟</strong></li>
+                        <li><strong data-i18n="performance.yr">预热模型：</strong><strong data-i18n="performance.qd">启动后先发送一条简单消息</strong></li>
                     </ul>
                 </div>
             </details>
             
             <details>
-                <summary>Ollama 优化</summary>
+                <summary data-i18n="performance.optimize">Ollama 优化</summary>
                 <div class="content">
                     <pre><code class="language-bash"># 设置 Ollama 并发请求数
 OLLAMA_MAX_LOADED_MODELS=2 ollama serve
@@ -2403,54 +2406,55 @@ ollama run qwen2.5:7b "" &</code></pre>
                 </div>
             </details>
             
-            <h3>🧹 定期维护</h3>
+            <h3 data-i18n="performance.maintenance">🧹 定期维护</h3>
             <ul>
-                <li><strong>清理旧会话：</strong><code>openclaw sessions cleanup --older-than 30d</code></li>
-                <li><strong>更新依赖：</strong><code>npm update -g openclaw</code></li>
-                <li><strong>清理缓存：</strong><code>openclaw cache clear</code></li>
-                <li><strong>检查日志大小：</strong>日志文件超过 100MB 时归档</li>
+                <li><strong data-i18n="performance.ql">清理旧会话：</strong><code>openclaw sessions cleanup --older-than 30d</code></li>
+                <li><strong data-i18n="performance.gx">更新依赖：</strong><code>npm update -g openclaw</code></li>
+                <li><strong data-i18n="performance.hc">清理缓存：</strong><code>openclaw cache clear</code></li>
+                <li><strong data-i18n="performance.jc">检查日志大小：</strong><strong data-i18n="performance.wj">日志文件超过 100MB 时归档</strong></li>
             </ul>
         </div>
 
         <!-- 常见问题 -->
         <div class="section" id="faq">
-            <h2>❓ 常见问题</h2>
+            <h2 data-i18n="faq.title">❓ 常见问题</h2>
             
             <details>
-                <summary>安装后 openclaw 命令找不到？</summary>
+                <summary data-i18n="faq.q1">安装后 openclaw 命令找不到？</summary>
                 <div class="content">
-                    <p><strong>原因：</strong>npm 全局目录不在 PATH 中。</p>
+                    <p><strong data-i18n="faq.q1.reason">原因：</strong><span data-i18n="faq.q1.reason.desc">npm 全局目录不在 PATH 中。</span></p>
                     <pre><code class="language-bash"># Windows: 将 npm prefix 目录添加到系统 PATH
 # macOS / Linux
 export PATH=$(npm config get prefix)/bin:$PATH</code></pre>
-                    <p><strong>Windows 永久添加：</strong></p>
+                    <p><strong data-i18n="faq.q1.winadd">Windows 永久添加：</strong></p>
                     <ol>
-                        <li>右键「此电脑」→ 属性 → 高级系统设置</li>
-                        <li>点击「环境变量」</li>
-                        <li>在「系统变量」中找到 Path，点击编辑</li>
-                        <li>新建，添加 <code>C:\Users\你的用户名\AppData\Roaming\npm</code></li>
-                        <li>确定保存，重启终端</li>
+                        <li data-i18n="faq.q1.winadd.1">右键「此电脑」→ 属性 → 高级系统设置</li>
+                        <li data-i18n="faq.q1.winadd.2">点击「环境变量」</li>
+                        <li data-i18n="faq.q1.winadd.3">在「系统变量」中找到 Path，点击编辑</li>
+                        <li data-i18n="faq.q1.winadd.4">新建，添加 <code>C:\Users\你的用户名\AppData\Roaming\npm</code></li>
+                        <li data-i18n="faq.q1.winadd.5">确定保存，重启终端</li>
                     </ol>
                 </div>
             </details>
             
             <details>
-                <summary>飞书机器人不回复消息？</summary>
+                <summary data-i18n="faq.q2">飞书机器人不回复消息？</summary>
                 <div class="content">
-                    <p><strong>检查清单：</strong></p>
+                    <p><strong data-i18n="faq.q2.checklist">检查清单：</strong></p>
                     <ol>
-                        <li>确认应用已发布到飞书</li>
-                        <li>检查事件订阅是否开启 WebSocket</li>
-                        <li>确认 im.message.receive_v1 事件已订阅</li>
-                        <li>检查权限是否已授予</li>
-                        <li>查看 OpenClaw 日志：openclaw gateway logs</li>
+                        <li data-i18n="faq.q2.checklist.1">确认应用已发布到飞书</li>
+                        <li data-i18n="faq.q2.checklist.2">检查事件订阅是否开启 WebSocket</li>
+                        <li data-i18n="faq.q2.checklist.3">确认 im.message.receive_v1 事件已订阅</li>
+                        <li data-i18n="faq.q2.checklist.4">检查权限是否已授予</li>
+                        <li data-i18n="faq.q2.checklist.5">查看 OpenClaw 日志：openclaw gateway logs</li>
                     </ol>
                 </div>
             </details>
             
             <details>
-                <summary>如何切换 AI 模型？</summary>
+                <summary data-i18n="faq.q3">如何切换 AI 模型？</summary>
                 <div class="content">
+                    <p data-i18n="faq.q3.desc">使用以下命令切换模型：</p>
                     <pre><code class="language-bash">/model kimi
 /model qwen
 /model deepseek</code></pre>
@@ -2458,20 +2462,20 @@ export PATH=$(npm config get prefix)/bin:$PATH</code></pre>
             </details>
             
             <details>
-                <summary>工作区在哪里？</summary>
+                <summary data-i18n="faq.q4">工作区在哪里？</summary>
                 <div class="content">
                     <ul>
-                        <li><strong>Windows：</strong> C:\Users\你的用户名\.openclaw\workspace</li>
-                        <li><strong>macOS：</strong> ~/.openclaw/workspace</li>
-                        <li><strong>Linux：</strong> ~/.openclaw/workspace</li>
+                        <li><strong data-i18n="faq.q4.windows">Windows：</strong> C:\Users\你的用户名\.openclaw\workspace</li>
+                        <li><strong data-i18n="faq.q4.macos">macOS：</strong> ~/.openclaw/workspace</li>
+                        <li><strong data-i18n="faq.q4.linux">Linux：</strong> ~/.openclaw/workspace</li>
                     </ul>
                 </div>
             </details>
             
             <details>
-                <summary>Gateway 启动失败，端口被占用？</summary>
+                <summary data-i18n="faq.q5">Gateway 启动失败，端口被占用？</summary>
                 <div class="content">
-                    <p><strong>方法 1：查找并关闭占用端口的进程</strong></p>
+                    <p><strong data-i18n="faq.q5.method1">方法 1：查找并关闭占用端口的进程</strong></p>
                     <pre><code class="language-bash"># Windows
 netstat -ano | findstr :18789
 taskkill /F /PID &lt;进程 ID&gt;
@@ -2480,7 +2484,7 @@ taskkill /F /PID &lt;进程 ID&gt;
 lsof -i :18789
 kill -9 &lt;进程 ID&gt;</code></pre>
                     
-                    <p><strong>方法 2：修改 OpenClaw 端口</strong></p>
+                    <p><strong data-i18n="faq.q5.method2">方法 2：修改 OpenClaw 端口</strong></p>
                     <pre><code class="language-bash"># 编辑配置文件
 # ~/.openclaw/openclaw.json
 {
@@ -2492,85 +2496,85 @@ kill -9 &lt;进程 ID&gt;</code></pre>
             </details>
             
             <details>
-                <summary>Ollama 连接失败？</summary>
+                <summary data-i18n="faq.q6">Ollama 连接失败？</summary>
                 <div class="content">
-                    <p><strong>检查步骤：</strong></p>
+                    <p><strong data-i18n="faq.q6.steps">检查步骤：</strong></p>
                     <ol>
-                        <li>确认 Ollama 服务正在运行：<code>ollama serve</code></li>
-                        <li>测试 Ollama API：<code>curl http://localhost:11434/api/tags</code></li>
-                        <li>确认模型已下载：<code>ollama list</code></li>
-                        <li>检查防火墙是否阻止 11434 端口</li>
-                        <li>Mac 用户可能需要允许 Ollama 通过防火墙</li>
+                        <li data-i18n="faq.q6.steps.1">确认 Ollama 服务正在运行：<code>ollama serve</code></li>
+                        <li data-i18n="faq.q6.steps.2">测试 Ollama API：<code>curl http://localhost:11434/api/tags</code></li>
+                        <li data-i18n="faq.q6.steps.3">确认模型已下载：<code>ollama list</code></li>
+                        <li data-i18n="faq.q6.steps.4">检查防火墙是否阻止 11434 端口</li>
+                        <li data-i18n="faq.q6.steps.5">Mac 用户可能需要允许 Ollama 通过防火墙</li>
                     </ol>
                 </div>
             </details>
             
             <details>
-                <summary>API Key 无效或过期？</summary>
+                <summary data-i18n="faq.q7">API Key 无效或过期？</summary>
                 <div class="content">
-                    <p><strong>解决方法：</strong></p>
+                    <p><strong data-i18n="faq.q7.solution">解决方法：</strong></p>
                     <ol>
-                        <li>登录对应模型平台确认账户状态</li>
-                        <li>检查 API Key 是否正确复制（无多余空格）</li>
-                        <li>确认账户有足够余额/额度</li>
-                        <li>如仍无效，重新生成 API Key 并更新配置</li>
-                        <li>检查是否需要配置代理访问</li>
+                        <li data-i18n="faq.q7.solution.1">登录对应模型平台确认账户状态</li>
+                        <li data-i18n="faq.q7.solution.2">检查 API Key 是否正确复制（无多余空格）</li>
+                        <li data-i18n="faq.q7.solution.3">确认账户有足够余额/额度</li>
+                        <li data-i18n="faq.q7.solution.4">如仍无效，重新生成 API Key 并更新配置</li>
+                        <li data-i18n="faq.q7.solution.5">检查是否需要配置代理访问</li>
                     </ol>
                 </div>
             </details>
             
             <details>
-                <summary>如何查看和导出聊天记录？</summary>
+                <summary data-i18n="faq.q8">如何查看和导出聊天记录？</summary>
                 <div class="content">
-                    <p><strong>查看会话列表：</strong></p>
+                    <p><strong data-i18n="faq.q8.list">查看会话列表：</strong></p>
                     <pre><code class="language-bash">openclaw sessions list</code></pre>
                     
-                    <p><strong>查看特定会话历史：</strong></p>
+                    <p><strong data-i18n="faq.q8.history">查看特定会话历史：</strong></p>
                     <pre><code class="language-bash">openclaw sessions history --session &lt;session-key&gt;</code></pre>
                     
-                    <p><strong>导出为文件：</strong></p>
+                    <p><strong data-i18n="faq.q8.export">导出为文件：</strong></p>
                     <pre><code class="language-bash">openclaw sessions export --format json --output chat-history.json</code></pre>
                 </div>
             </details>
             
             <details>
-                <summary>内存占用过高怎么办？</summary>
+                <summary data-i18n="faq.q9">内存占用过高怎么办？</summary>
                 <div class="content">
-                    <p><strong>优化建议：</strong></p>
+                    <p><strong data-i18n="faq.q9.tips">优化建议：</strong></p>
                     <ul>
-                        <li>使用较小的模型（如 7B 而非 14B）</li>
-                        <li>定期清理旧会话：<code>openclaw sessions cleanup</code></li>
-                        <li>减少同时运行的子代理数量</li>
-                        <li>使用 Ollama 时调整上下文长度</li>
-                        <li>考虑增加系统内存或使用 swap</li>
+                        <li data-i18n="faq.q9.tips.1">使用较小的模型（如 7B 而非 14B）</li>
+                        <li data-i18n="faq.q9.tips.2">定期清理旧会话：<code>openclaw sessions cleanup</code></li>
+                        <li data-i18n="faq.q9.tips.3">减少同时运行的子代理数量</li>
+                        <li data-i18n="faq.q9.tips.4">使用 Ollama 时调整上下文长度</li>
+                        <li data-i18n="faq.q9.tips.5">考虑增加系统内存或使用 swap</li>
                     </ul>
                 </div>
             </details>
             
-            <h3>🔒 安全最佳实践</h3>
+            <h3 data-i18n="faq.security.title">🔒 安全最佳实践</h3>
             
             <div class="info">
-                <strong>保护你的 OpenClaw 实例：</strong>
+                <strong data-i18n="faq.security.protect">保护你的 OpenClaw 实例：</strong>
             </div>
             
             <ul>
-                <li><strong>定期轮换 API Key</strong> - 每 3-6 个月更新一次</li>
-                <li><strong>不要提交敏感配置到 Git</strong> - 将 <code>.openclaw/</code> 加入 <code>.gitignore</code></li>
-                <li><strong>限制 Gateway 访问</strong> - 生产环境设置 <code>gateway.bind: "loopback"</code></li>
-                <li><strong>使用环境变量存储密钥</strong> - 避免明文存储在配置文件中</li>
-                <li><strong>定期更新 OpenClaw</strong> - <code>npm update -g openclaw</code></li>
-                <li><strong>审查已安装技能</strong> - 只从可信来源安装技能</li>
-                <li><strong>备份重要数据</strong> - 定期备份 <code>~/.openclaw/workspace</code></li>
-                <li><strong>监控日志</strong> - 定期检查异常活动</li>
+                <li data-i18n="faq.security.1"><strong>定期轮换 API Key</strong> - 每 3-6 个月更新一次</li>
+                <li data-i18n="faq.security.2"><strong>不要提交敏感配置到 Git</strong> - 将 <code>.openclaw/</code> 加入 <code>.gitignore</code></li>
+                <li data-i18n="faq.security.3"><strong>限制 Gateway 访问</strong> - 生产环境设置 <code>gateway.bind: "loopback"</code></li>
+                <li data-i18n="faq.security.4"><strong>使用环境变量存储密钥</strong> - 避免明文存储在配置文件中</li>
+                <li data-i18n="faq.security.5"><strong>定期更新 OpenClaw</strong> - <code>npm update -g openclaw</code></li>
+                <li data-i18n="faq.security.6"><strong>审查已安装技能</strong> - 只从可信来源安装技能</li>
+                <li data-i18n="faq.security.7"><strong>备份重要数据</strong> - 定期备份 <code>~/.openclaw/workspace</code></li>
+                <li data-i18n="faq.security.8"><strong>监控日志</strong> - 定期检查异常活动</li>
             </ul>
             
-            <h3>📞 获取帮助</h3>
-            <p>如果以上方法无法解决问题：</p>
+            <h3 data-i18n="faq.help.title">📞 获取帮助</h3>
+            <p data-i18n="faq.help.desc">如果以上方法无法解决问题：</p>
             <ul>
-                <li>查看官方文档：<a href="https://docs.openclaw.ai" target="_blank">docs.openclaw.ai</a></li>
-                <li>搜索 GitHub Issues：<a href="https://github.com/openclaw/openclaw/issues" target="_blank">github.com/openclaw/openclaw/issues</a></li>
-                <li>加入 Discord 社区：<a href="https://discord.com/invite/clawd" target="_blank">discord.gg/clawd</a></li>
-                <li>提交新问题（附日志）：<code>openclaw gateway logs --output issue.log</code></li>
+                <li data-i18n="faq.help.1">查看官方文档：<a href="https://docs.openclaw.ai" target="_blank">docs.openclaw.ai</a></li>
+                <li data-i18n="faq.help.2">搜索 GitHub Issues：<a href="https://github.com/openclaw/openclaw/issues" target="_blank">github.com/openclaw/openclaw/issues</a></li>
+                <li data-i18n="faq.help.3">加入 Discord 社区：<a href="https://discord.com/invite/clawd" target="_blank">discord.gg/clawd</a></li>
+                <li data-i18n="faq.help.4">提交新问题（附日志）：<code>openclaw gateway logs --output issue.log</code></li>
             </ul>
         </div>
 
@@ -2587,37 +2591,37 @@ kill -9 &lt;进程 ID&gt;</code></pre>
 
         <!-- 更多资源 -->
         <div class="section" id="resources">
-            <h2>🔗 资源与社区</h2>
+            <h2 data-i18n="resources.title">🔗 资源与社区</h2>
             
-            <h3>📖 官方资源</h3>
+            <h3 data-i18n="resources.official">📖 官方资源</h3>
             <ul>
-                <li><strong>官方文档：</strong> <a href="https://docs.openclaw.ai" target="_blank">docs.openclaw.ai</a> - 完整使用指南</li>
-                <li><strong>GitHub 仓库：</strong> <a href="https://github.com/openclaw/openclaw" target="_blank">github.com/openclaw/openclaw</a> - 源码与 Issue 追踪</li>
-                <li><strong>技能市场：</strong> <a href="https://clawhub.ai" target="_blank">clawhub.ai</a> - 发现和分享技能</li>
-                <li><strong>更新日志：</strong> <a href="https://github.com/openclaw/openclaw/releases" target="_blank">GitHub Releases</a> - 版本更新记录</li>
+                <li data-i18n="resources.official.docs"><strong>官方文档：</strong> <a href="https://docs.openclaw.ai" target="_blank">docs.openclaw.ai</a> - 完整使用指南</li>
+                <li data-i18n="resources.official.github"><strong>GitHub 仓库：</strong> <a href="https://github.com/openclaw/openclaw" target="_blank">github.com/openclaw/openclaw</a> - 源码与 Issue 追踪</li>
+                <li data-i18n="resources.official.clawhub"><strong>技能市场：</strong> <a href="https://clawhub.ai" target="_blank">clawhub.ai</a> - 发现和分享技能</li>
+                <li data-i18n="resources.official.releases"><strong>更新日志：</strong> <a href="https://github.com/openclaw/openclaw/releases" target="_blank">GitHub Releases</a> - 版本更新记录</li>
             </ul>
             
-            <h3>💬 社区交流</h3>
+            <h3 data-i18n="resources.community">💬 社区交流</h3>
             <ul>
-                <li><strong>Discord 社区：</strong> <a href="https://discord.com/invite/clawd" target="_blank">discord.gg/clawd</a> - 实时交流与答疑</li>
-                <li><strong>Telegram 群组：</strong> <a href="https://t.me/openclaw" target="_blank">t.me/openclaw</a> - 中文讨论</li>
-                <li><strong>Twitter/X：</strong> <a href="https://twitter.com/openclaw" target="_blank">@openclaw</a> - 官方动态</li>
+                <li data-i18n="resources.community.discord"><strong>Discord 社区：</strong> <a href="https://discord.com/invite/clawd" target="_blank">discord.gg/clawd</a> - 实时交流与答疑</li>
+                <li data-i18n="resources.community.telegram"><strong>Telegram 群组：</strong> <a href="https://t.me/openclaw" target="_blank">t.me/openclaw</a> - 中文讨论</li>
+                <li data-i18n="resources.community.twitter"><strong>Twitter/X：</strong> <a href="https://twitter.com/openclaw" target="_blank">@openclaw</a> - 官方动态</li>
             </ul>
             
-            <h3>📚 相关教程</h3>
+            <h3 data-i18n="resources.tutorials">📚 相关教程</h3>
             <ul>
-                <li><a href="https://docs.openclaw.ai/getting-started" target="_blank">新手入门指南</a> - 从零开始使用 OpenClaw</li>
-                <li><a href="https://docs.openclaw.ai/skills" target="_blank">技能开发教程</a> - 创建自定义技能</li>
-                <li><a href="https://docs.openclaw.ai/channels/feishu" target="_blank">飞书接入详解</a> - 深度配置指南</li>
-                <li><a href="https://docs.openclaw.ai/automation" target="_blank">自动化工作流</a> - 定时任务与自动化</li>
+                <li data-i18n="resources.tutorials.gettingStarted"><a href="https://docs.openclaw.ai/getting-started" target="_blank">新手入门指南</a> - 从零开始使用 OpenClaw</li>
+                <li data-i18n="resources.tutorials.skillDev"><a href="https://docs.openclaw.ai/skills" target="_blank">技能开发教程</a> - 创建自定义技能</li>
+                <li data-i18n="resources.tutorials.feishu"><a href="https://docs.openclaw.ai/channels/feishu" target="_blank">飞书接入详解</a> - 深度配置指南</li>
+                <li data-i18n="resources.tutorials.automation"><a href="https://docs.openclaw.ai/automation" target="_blank">自动化工作流</a> - 定时任务与自动化</li>
             </ul>
             
-            <h3>🤝 贡献与支持</h3>
+            <h3 data-i18n="resources.contribute">🤝 贡献与支持</h3>
             <ul>
-                <li><strong>提交 Bug：</strong> <a href="https://github.com/openclaw/openclaw/issues" target="_blank">GitHub Issues</a></li>
-                <li><strong>功能建议：</strong> <a href="https://github.com/openclaw/openclaw/discussions" target="_blank">GitHub Discussions</a></li>
-                <li><strong>提交技能：</strong> <a href="https://clawhub.ai/submit" target="_blank">ClawHub 提交</a></li>
-                <li><strong>赞助项目：</strong> <a href="https://github.com/sponsors/openclaw" target="_blank">GitHub Sponsors</a></li>
+                <li data-i18n="resources.contribute.bug"><strong>提交 Bug：</strong> <a href="https://github.com/openclaw/openclaw/issues" target="_blank">GitHub Issues</a></li>
+                <li data-i18n="resources.contribute.feature"><strong>功能建议：</strong> <a href="https://github.com/openclaw/openclaw/discussions" target="_blank">GitHub Discussions</a></li>
+                <li data-i18n="resources.contribute.skill"><strong>提交技能：</strong> <a href="https://clawhub.ai/submit" target="_blank">ClawHub 提交</a></li>
+                <li data-i18n="resources.contribute.sponsor"><strong>赞助项目：</strong> <a href="https://github.com/sponsors/openclaw" target="_blank">GitHub Sponsors</a></li>
             </ul>
         </div>
 
